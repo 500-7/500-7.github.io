@@ -107,12 +107,13 @@ h1{
     visibility: hidden;
   }
 h3{
-  font-size: 5em;
+  font-size: 20vw;
   opacity: 0.3;
   transform: rotate(-45deg);
   position: absolute;
+  font-family: comic sans ms;
   z-index: -1000;
-  top: 60%;
+  top: 50%;
 }
 .data{
   display: grid;
