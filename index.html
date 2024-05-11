@@ -1087,6 +1087,12 @@ function handleTransfer(e) {
     }
     break;
   }
+  function decimal(){
+    var pre_answer = Number(resultOutPut.textContent);
+    var answer = pre_answer.toFixed(3);
+    resultOutput.textContent = answer;
+  }
+  decimal();
 }
 
 
