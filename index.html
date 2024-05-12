@@ -1088,8 +1088,9 @@ function handleTransfer(e) {
     break;
   }
   function decimal(){
+    var resultOutput = document.getElementById("toop");
     var pre_answer = Number(resultOutPut.textContent);
-    var answer = pre_answer.toFixed(3);
+    var answer = pre_answer.toFixed(4);
     resultOutput.textContent = answer;
   }
   decimal();
