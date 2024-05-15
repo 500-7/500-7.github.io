@@ -7,13 +7,29 @@
   <link rel="icon" type="image/x-icon" href="fav.jpeg"/>
   <link rel="stylesheet" href="math.css"/>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  <style>
+   #holder{
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  height: 5px;
+  border: 1px solid gray;
+}
+#loa_der{
+  width: 0%;
+  background: greenyellow;
+  height: 4px;
+}
+  </style>
 </head>
 <body>
   <div class="page" id="tab_1">
     <section class="cena">
+      <div class="spen">
           <span class="material-symbols-outlined">
 filter_9
 </span>
+      </div>
   <h1>
     The Tistic Currency Converter
   </h1>
@@ -32,7 +48,7 @@ filter_9
       </p>
     </section>
     <div id="holder">
-      <div id="loader"></div>
+      <div id="loa_der"></div>
     </div>
   </div>
   
@@ -102,7 +118,7 @@ filter_9
   <script>
    let t_1 = document.getElementById("tab_1");
   let t_2 = document.getElementById("tab_2");
-  let loader = document.getElementById("loader");
+  let loader = document.getElementById("loa_der");
 window.onload = function(){
     var interv = setInterval(ract, 50);
     var width = 0;
@@ -122,7 +138,8 @@ window.onload = function(){
       }
   }
 }
-document.getElementById("fro").addEventListener("input", handleTransfer);
+  
+  document.getElementById("fro").addEventListener("input", handleTransfer);
 function handleTransfer(e) {
   let resultOutput = document.getElementById("toop");
 
@@ -131,8 +148,7 @@ function handleTransfer(e) {
     resultOutput.innerHTML = "Enter a valid number";
     return;
   }
-  
-  let countryInput = document.getElementById("counfro").value;
+   let countryInput = document.getElementById("counfro").value;
   let countryOutput = document.getElementById("countoo").value;
   switch(countryInput){
     case "Australia":
@@ -190,8 +206,8 @@ function handleTransfer(e) {
     break;
     }
     break;
-
-    case "Britain":
+    
+     case "Britain":
     switch(countryOutput){
         case "Australia":
     resultOutput.innerHTML = inputValue * 1.896;
@@ -246,7 +262,7 @@ function handleTransfer(e) {
     break;
     }
     break;
-    
+       
     case "Burundi":
     switch(countryOutput){
         case "Australia":
@@ -414,7 +430,7 @@ function handleTransfer(e) {
     break;
     }
     break;
-    
+        
     case "India":
     switch(countryOutput){
         case "Australia":
@@ -525,8 +541,8 @@ function handleTransfer(e) {
     resultOutput.innerHTML = inputValue * 0.0064;
     break;
     }
-    break; 
-    
+    break;  
+       
     case "Kenya":
     switch(countryOutput){
         case "Australia":
@@ -694,7 +710,7 @@ function handleTransfer(e) {
     break;
     }
     break;
-    
+   
     case "Nigeria":
     switch(countryOutput){
         case "Australia":
@@ -749,7 +765,7 @@ function handleTransfer(e) {
     resultOutput.innerHTML = inputValue * 0.00069;
     break;
     }
-    break;
+    break; 
     
     case "Rwanda":
     switch(countryOutput){
@@ -807,7 +823,7 @@ function handleTransfer(e) {
     }
     break;
     
-    case "South Africa":
+     case "South Africa":
     switch(countryOutput){
         case "Australia":
     resultOutput.innerHTML = inputValue * 0.0821;
@@ -862,7 +878,7 @@ function handleTransfer(e) {
     break;
     }
     break;
-    
+      
     case "Swaziland":
     switch(countryOutput){
         case "Australia":
@@ -918,6 +934,7 @@ function handleTransfer(e) {
     break;
     }
     break;
+    
     
     case "Tanzania":
     switch(countryOutput){
@@ -1030,7 +1047,7 @@ function handleTransfer(e) {
     break;
     }
     break;
-    
+        
     case "United States of America":
     switch(countryOutput){
         case "Australia":
