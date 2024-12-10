@@ -5,6 +5,7 @@
   <meta http-equiv="CONTENT-TYPE" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css"/>
+  <link rel="stylesheet" href="resource.css"/>
   <link rel="icon" type="image/x-icon" href="logo.png"/>
   <title>Math Saints</title>
   
@@ -37,55 +38,153 @@
   </h1>
   <p>We offer a range of lessons tailored to different levels, from basic math to advanced topics</p>
   <h2>The Courses</h2>
-  <div class="one">
+  <div class="service-container">
+  <div class="tab">
     <h3>
 <span class="material-symbols-outlined">
 calculate
 </span>
-    Elementary Maths
+    Arithmetic
   </h3>
     <p>
-      Where numbers whisper their truths, and equations become puzzles to solve.
+     The symphony of numbers, where addition and subtraction dance to life's basic rhythm. 
     </p>
     <a href="app.html">Get Started</a>
   </div>
-  <div class="two">
+  <div class="tab">
     <h3>
-    <span class="material-symbols-outlined">
-architecture
-</span>
-    Algebra and Geometry
-  </h3>
-    <p>
-      Algebra is the poetry of patterns, revealing the unseen connections between numbers, while geometry is the art of space, painting the world with shapes, angles, and symmetry.
-    </p>
-    <a href="app.html">Get Started</a>
-  </div>
-  <div class="three">
-    <h3>
-    <span class="material-symbols-outlined">
+      <span class="material-symbols-outlined">
 function
 </span>
-    Calculus and Trigonometry
+    Algebra
   </h3>
     <p>
-      Calculus is the language of change, capturing the dance of motion and growth, while trigonometry maps the rhythms of the cosmos, weaving angles and waves into harmony.
+      The language of the unknown, where variables and constants weave the fabric of equations.
     </p>
     <a href="app.html">Get Started</a>
   </div>
-  <div class="four">
+  <div class="tab">
+    <h3>
+      <span class="material-symbols-outlined">
+architecture
+</span>
+    Geometry
+  </h3>
+    <p>
+   The art of shapes and spaces, painting the world with lines, angles, and curves.   
+    </p>
+    <a href="app.html">Get Started</a>
+  </div>
+  <div class="tab">
+     <h3>
+    <span class="material-symbols-outlined">
+square_foot
+</span>
+    Trigonometry
+  </h3>
+    <p>
+  A celestial guide to the angles of the universe, mapping stars and waves alike.    
+    </p>
+    <a href="app.html">Get Started</a>
+  </div>
+<div class="tab">
      <h3>
     <span class="material-symbols-outlined">
 functions
 </span>
-    Pure Maths
+    Calculus
   </h3>
     <p>
-   Pure math is the symphony of abstract thought, where logic and imagination converge to unveil the timeless beauty of truth.   
+  The poetry of change, where infinitesimals sketch the motion of the cosmos.
     </p>
     <a href="app.html">Get Started</a>
   </div>
- 
+    <div class="tab">
+     <h3>
+    <span class="material-symbols-outlined">
+timeline
+</span>
+    Statistics
+  </h3>
+    <p>
+The storyteller of numbers, revealing patterns hidden in the chaos of data.
+    </p>
+    <a href="app.html">Get Started</a>
+  </div>
+    <div class="tab">
+     <h3>
+    <span class="material-symbols-outlined">
+precision_manufacturing
+</span>
+    Probability
+  </h3>
+    <p>
+      The fortune-teller of mathematics, measuring chance with a roll of the dice.
+    </p>
+    <a href="app.html">Get Started</a>
+  </div>
+    <div class="tab">
+     <h3>
+    <span class="material-symbols-outlined">
+pin
+</span>
+    Number Thoery
+  </h3>
+    <p>
+      The study of eternal truths, unraveling the secrets of primes and perfection.
+    </p>
+    <a href="app.html">Get Started</a>
+  </div>
+    <div class="tab">
+     <h3>
+   <span class="material-symbols-outlined">
+join_right
+</span>
+    Set Thoery
+  </h3>
+    <p>
+      The philosopher’s playground, where collections form the building blocks of logic.
+    </p>
+    <a href="app.html">Get Started</a>
+  </div>
+    <div class="tab">
+     <h3>
+   <span class="material-symbols-outlined">
+design_services
+</span>
+    Linear Algebra
+  </h3>
+    <p>
+      The backbone of dimensions, where vectors and matrices structure reality.
+    </p>
+    <a href="app.html">Get Started</a>
+  </div>
+    <div class="tab">
+     <h3>
+    <span class="material-symbols-outlined">
+all_inclusive
+</span>
+    Topology
+  </h3>
+    <p>
+      The study of shapes that bend but never break, discovering the essence of continuity.
+    </p>
+    <a href="app.html">Get Started</a>
+  </div>
+    <div class="tab">
+     <h3>
+    <span class="material-symbols-outlined">
+psychology_alt
+</span>
+    Mathematical Logic
+  </h3>
+    <p>
+     The foundation of reason, where symbols and proof sculpt the architecture of thought.
+    </p>
+    <a href="app.html">Get Started</a>
+  </div>
+    
+  </div>
   <img src="flow.jpg.png" class="flowImage"/>
     <hr>
   <footer>
@@ -112,17 +211,5 @@ chat
     <a href="about.html">Get to know more about us.</a><br>
     <a href="resource.html">See our lessons</a>
   </footer>
-  <script src="https://js.pusher.com/beams/1.0/push-notifications-cdn.js"></script>
-  <script src="noti.js"></script>
-  <script>
-  const beamsClient = new PusherPushNotifications.Client({
-    instanceId: 'd8a98e35-e24c-4aea-96c9-b296125d2448',
-  });
-
-  beamsClient.start()
-    .then(() => beamsClient.addDeviceInterest('hello'))
-    .then(() => console.log('Successfully registered and subscribed!'))
-    .catch(console.error);
-</script>
 </body>
 </html>
