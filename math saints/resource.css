@@ -2,22 +2,22 @@
   display: grid;
   max-width: 350px;
   height: 220px;
-  background: rgb(0, 215, 255);
+  background: rgb(37, 211, 102);
   border-radius: 20px;
   margin: 5px;
-  border: 1px solid rgb(0, 215, 255);
+  border: 1px solid rgb(37, 211, 102);
   transition: all .5s;
 }
 .tab:hover {
-  border: 1px solid rgb(10, 25, 47);
-  box-shadow: 0 0 20px rgb(0, 215, 255);
+  border: 1px solid #70ff00;
+  box-shadow: 0 0 20px rgb(37, 211, 102);
 }
 .tab a {
   text-decoration: none;
   color: white;
   grid-row: 4/5;
   grid-column: 3/5;
-  background: rgb(10, 25, 47);
+  background: rgb(99, 168, 204);
   border-radius: 30px;
   margin: 10px;
   padding: 10px;
@@ -26,11 +26,11 @@
   transition: all .5s;
 }
 .tab a:hover {
-  box-shadow: 0 0 10px rgb(10, 25, 47);
+  box-shadow: 0 0 10px rgb(1, 238, 255);
   border: 1px solid rgb(0, 215, 255);
 }
 .tab p {
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   grid-row: 2/5;
   grid-column: 1/5;
 }
@@ -42,7 +42,7 @@ h3 {
   align-items: center;
   gap: 10px;
   padding: 10px 15px;
-  background: rgb(10, 25, 47);
+  background: rgb(99, 168, 204);
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
 }
