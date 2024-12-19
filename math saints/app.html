@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <meta http-equiv="CONTENT-TYPE" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css"/>
+  <link rel="stylesheet" href="pay.css"/>
+  
+  <link rel="icon" type="image/x-icon" href="logo.png"/>
+  <title>Math Saints</title>
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Agu+Display&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+  <style>
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 24
+}
+  </style>
+</head>
+<body class="ubuntu-light">
+<script src="https://checkout.flutterwave.com/v3.js"></script>
+  <div class="allholder">
+  <div class="heading">
+  <img src="logo.png">
+    <h2>The Math Saints</h2>
+  </div>
+  <div class="mega-cont">
+  <div class="cont">
+    <div id="log" class="login">
+      <h3>Welcome back</h3>
+      <h5>User name:</h5>
+      <input type="text" id="login-username" placeholder="Your name"/>
+      <h5>Password:</h5>
+      <input type="password" id="login-password"/>
+      <button id="login-button">LOGIN</button>
+      I don't have an account <a href="#sign" class="linknext" id="createaccount">Create Account</a>
+    </div>
+    
+    <div id="sign" class="sign-up">
+      <div id="tab1" class="tabs">
+        <h5>Email:</h5>
+        <input type="email" id="sign-up-email" placeholder="something@example.com"/>
+        <h5>Password:</h5>
+        <input type="password" id="sign-up-password"/>
+        <a href="#tab2" class="linknext">Next</a>
+      </div>
+      <div id="tab2" class="tabs">
+        <h5>Your name:</h5>
+        <input type="text" id="sign-up-name" placeholder="User name"/>
+        <h4>
+          Sign up As:
+        </h4>
+        <select id="sign-up-path">
+          <option value="Student">Student</option>
+          <option value="Tutor">Tutor</option>
+        </select>
+        <div id="tode" style="visibility: hidden;">
+          <label for="tutor-code">Tutor Code</label>
+          <input type="text" id="tutor-code"/>
+        </div>
+        <a href="#tab1" class="linknext" id="back">Previous</a>
+        <button class="linknext" id="fro"> <a href="#tab3" class="linknext">Next</a></button>
+      </div>
+      <div id="tab3" class="tabs">
+        <h3 class="ubuntu-bold-italic">Subscription Packages</h3>
+        <div class="free">
+          <h1>0.00 EUR</h1>
+          <ul>
+            <li>Get Notified of new concepts</li>
+            <li>Get Notified of new videos</li>
+            <li>View lessons</li>
+          </ul>
+          <button class="subsribe">Get</button>
+        </div>
+        <div class="pro1">
+          <h1>12.00 EUR</h1>
+          <ul>
+            <li>Get Notified of new concepts</li>
+            <li>Get Notified of new videos</li>
+            <li>View lessons</li>
+            <li>Attend Old lessons</li>
+          </ul>    
+          <button class="subsribe">Subscribe</button>          
+        </div>
+        <div class="pro2">
+          <h1>15.00 EUR <span>/60 mins</span></h1>
+           <ul>
+            <li>Get Notified of new concepts</li>
+            <li>Get Notified of new videos</li>
+            <li>View lessons</li>
+            <li>Attend Old lessons</li>
+             <li>Attend live lessons</li>
+             <li>Schedule lessons with tutors</li>
+             <li>Indulge in live class discussions</li>
+          </ul>
+          <button class="subsribe">Subscribe</button>
+        </div>
+        <div class="pro3">
+          <h1>20.00 EUR <span>/90 mins</span></h1>
+           <ul>
+            <li>Get Notified of new concepts</li>
+            <li>Get Notified of new videos</li>
+            <li>View lessons</li>
+            <li>Attend Old lessons</li>
+             <li>Attend live lessons</li>
+             <li>Schedule lessons with tutors</li>
+             <li>Indulge in live class discussions</li>
+          </ul>
+          <button class="subsribe">Subscribe</button>
+        </div>
+        <div class="pro4">
+          <h1>25.00 EUR <span>/120 mins</span></h1>
+           <ul>
+            <li>Get Notified of new concepts</li>
+            <li>Get Notified of new videos</li>
+            <li>View lessons</li>
+            <li>Attend Old lessons</li>
+             <li>Attend live lessons</li>
+             <li>Schedule lessons with tutors</li>
+             <li>Indulge in live class discussions</li>
+          </ul>
+          <button class="subsribe">Subscribe</button>
+        </div>
+        Already have an account <a href="#log" class="logintab linknext">Login</a>
+      </div>
+    </div>
+  </div>
+  </div>
+  </div>
+   <div class="tutortab tabb">
+    <h3>Hello tutor</h3>
+  </div>
+  <div class="studenttab tabb">
+    <h3>Hello student</h3>
+  </div>
+  <script src="apple.js"></script>
+  <script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-app.js";
+  import{ getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, updateProfile, onAuthStateChanged, signInWithPopup, GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-auth.js";
+  import { getDatabase, get, set, push, query, onValue, ref, update, remove, orderByChild } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-database.js";
+  
+  const firebaseConfig = {
+    apiKey: "AIzaSyDkTt3jXbvX762n7D05GmfnV_pZ38inTyo",
+    authDomain: "mathsaints-c5400.firebaseapp.com",
+    projectId: "mathsaints-c5400",
+    storageBucket: "mathsaints-c5400.firebasestorage.app",
+    messagingSenderId: "198042881627",
+    appId: "1:198042881627:web:56c5c4629fcf8fd2a5b97e"
+  };
+  
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+  const db = getDatabase(app);
+  
+
+  //login and sign in functions
+  var emailInput = document.getElementById('sign-up-email');
+  var passwordInput = document.getElementById('sign-up-password');
+  var usernameInput = document.getElementById("sign-up-name");
+  var signupPath = document.getElementById("sign-up-path");
+  
+  var signTab = document.querySelector(".allholder");
+  var tutorTab = document.querySelector(".tutortab");
+  var studentTab = document.querySelector(".studenttab");
+  var loginTab = document.querySelector('.login');
+var signInTab = document.querySelector('.sign-up');
+
+  
+  var signupBtns = document.querySelectorAll(".subsribe");
+  signupBtns.forEach(buton => {
+    buton.addEventListener("click", () => {
+      
+      var email = emailInput.value;
+      var password = passwordInput.value;
+      var username = usernameInput.value;
+     
+      var signPath = signupPath.value;
+      var userRef = ref(db, "users/" + username);
+      
+      if (email !== "" && password !== "") {
+      createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        var user = userCredential.user;
+        set(userRef, {
+          username: username,
+          email: email,
+          password: password,
+          uid: user.uid,
+          category: signPath
+        })
+        .then(() => {
+          get(userRef).then((snapshot) => {
+            var data = snapshot.val();
+            signTab.style.visibility = "hidden";
+            signInTab.style.visibility = "hidden";
+            loginTab.style.visibility = "hidden";
+            
+            if (signPath = "Student") {
+              studentTab.style.visibilty = "visible";
+              tutorTab.style.visibility = "hidden";
+            }
+          });
+        });
+      });
+      }
+    });
+  });
+  
+  var loginUsernameInput = document.querySelector("#login-username");
+  var loginPasswordInput = document.querySelector("#login-password");
+  var loginBtn = document.querySelector("#login-button");
+  loginBtn.addEventListener("click", () => {
+    var loginUsername = loginUsernameInput.value.trim();
+    var loginPassword = loginPasswordInput.value.trim();
+    if (loginUsername !== "" && loginPassword !== "") {
+      var loginRef = ref(db, "users/");
+    get(loginRef)
+    .then((snapshot) => {
+      var data = snapshot.val();
+      Object.keys(data).forEach((key) => {
+        if (data[key].username == loginUsername) {
+          if (data[key].password == loginPassword) {
+            if (data[key].category == "Student") {
+              signTab.style.visibility = "hidden";
+              signInTab.style.visibility = "hidden";
+              loginTab.style.visibility = "hidden";
+              
+              studentTab.style.visibilty = "visible";
+              tutorTab.style.visibility = "hidden";
+            } 
+          } else {
+            showAlert("Wrong Password...");
+          }
+        } else {
+          showAlert("That account doesn't exist...");
+        }
+        
+      });
+    });
+    } else {
+      showAlert("Please fill the fields");
+    }
+    
+  });
+  
+  
+  
+  //utility functions
+  var chooser = document.querySelector('#sign-up-path');
+var btn1 = document.getElementById('back');
+var btntotutor = document.getElementById('fro');
+var tutorCodeInput = document.querySelector('#tode');
+chooser.addEventListener('change', (e) => {
+    var choice = e.target.value;
+   btntotutor.replaceWith(btntotutor.cloneNode(true));
+   btntotutor = document.getElementById('fro'); 
+
+    if (choice === 'Tutor') {
+        tutorCodeInput.style.visibility = 'visible';
+        btntotutor.innerHTML = "SIGN UP";
+        btntotutor.addEventListener('click', tutorSignUp);
+    } else {
+        tutorCodeInput.style.visibility = 'hidden';
+        btntotutor.innerHTML = `<a href="#tab3" class="linknext">Next</a>`;
+    }
+});
+
+
+</script>
+</body>
+</html>
