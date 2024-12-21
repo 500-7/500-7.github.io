@@ -534,7 +534,7 @@ oldLessonUploadBtn.addEventListener("click", () => {
     Object.keys(data).sort((a,b) => data[a].timestamp - data[b].timestamp).forEach((key) => {
       if (data[key].tutorName === tutorName.textContent) {
         var vidtitle = data[key].videoTitle;
-        var vidtopic = data[key].videoTitle;
+        var vidtopic = data[key].videoTopic;
         var vidtutor = data[key].tutorName;
         var vidname = data[key].videoName;
         
