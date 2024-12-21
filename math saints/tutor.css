@@ -1,0 +1,118 @@
+.tutor-welcome {
+  text-shadow: 0 0 10px #70ff00;
+  font-size: 1.5rem;
+  padding: 10px;
+}
+.lessoner {
+  position: relative;
+  font-size: 1.3rem;
+  margin: 10px;
+  display: grid;
+  place-content: center;
+  width: 197px;
+  height: 37px;
+  border-radius: 5pc;
+  border: 1px solid rgb(37, 211, 102);
+  color: white;
+  box-shadow: 0 0 10px #70ff00;
+  background: rgb(37, 211, 102);
+}
+.lessoner::before {
+  content: "";
+  border: 1px solid #70ff00;
+  position: absolute;
+  z-index: -1;
+  border-radius: 5pc;
+  margin-left: -7.5px;
+  margin-top: -7.5px;
+  width: 210px;
+  height: 50px;
+}
+.videoUpload {
+  width: 100%;
+  height: 100vh;
+  background: rgb(98, 167, 204);
+  overflow-y: auto;
+  position: absolute;
+  top: 0; right: 0;
+  padding: 10px;
+  visibility: hidden;
+  z-index: -1000;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.videoUpload input {
+  width: 70%;
+  height: 40px;
+  border: 1px solid gray;
+  border-radius: 5px;
+  padding: 5px;
+}
+.videoUpload .img-hold {
+  width: 100%;
+  height: 30vh;
+  display: grid;
+  place-content: center;
+  
+}
+.videoUpload .img-hold img {
+  width: 150px;
+  height: 150px;
+  border-radius: 100%;
+  box-shadow: 0 0 10px #70ff00;
+}
+.videoUpload h3 {
+  text-align: center;
+  font-size: 2rem;
+  padding: 10px;
+}
+.close {
+  background: rgb(37, 211, 102);
+  position: absolute;
+  top: 0;
+  right: 0;
+  border: none;
+  padding: 10px;
+  border-radius: 100% 0% 29% 71% / 0% 100% 0% 100% ;
+}
+.liveRecord {
+  display: none;
+  gap: 10px;
+}
+.oldvideoUpload {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+#startLiveRecord, #old-vid-upload {
+  width: 80%;
+  height: 40px;
+  display: grid;
+  place-content: center;
+  color: white;
+  background: rgb(37, 211, 102);
+  border: 1px solid #70ff00;
+  border-radius: 15px;
+}
+#startLiveRecord:hover, #old-vid-upload:hover {
+  box-shadow: 0 0 10px #70ff00;
+}
+.lesson-holder {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  justify-items: center;
+  align-items: center;
+}
+.video-card {
+  width: 350px;
+  height: 380px;
+  margin: 10px;
+  border-radius: 15px;
+  background: rgb(37, 211, 102);
+}
+.video-card video {
+  width: 100%;
+  height: 80%;
+}
