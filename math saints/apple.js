@@ -68,5 +68,72 @@ function showAlert(message) {
    });
 }
 
- 
+ var tutorAppearBtn = document.querySelector('#tutor-profile-appear');
+ var tutorProfile = document.querySelector('#tutor-profile');
+ var tutorappear = "off";
+  tutorAppearBtn.addEventListener('click', () => {
+     if (tutorappear === "off") {
+         tutorProfile.style.visibility = "visible";
+         tutorProfile.style.zIndex = "1000";
+         tutorAppearBtn.innerHTML = `<span class="material-symbols-outlined">
+close
+</span>`;
+         tutorappear = "on";
+     } else {
+         tutorProfile.style.visibility = "hidden";
+         tutorProfile.style.zIndex = "-1000";
+         tutorAppearBtn.innerHTML = `<span class="material-symbols-outlined">
+account_circle
+</span>`;
+         tutorappear = "off";
+     }
+  });
       
+var studentProfileAppear = document.querySelector('#student-profile-appear');
+var studentProfile = document.querySelector('#student-profile');
+var studentAppear = "off";
+studentProfileAppear.addEventListener('click', () => {
+     if (studentAppear === "off") {
+         studentProfile.style.visibility = "visible";
+         studentProfile.style.zIndex = "1000";
+         studentProfileAppear.innerHTML = `<span class="material-symbols-outlined">
+close
+</span>`;
+         studentAppear = "on";
+     } else {
+         studentProfile.style.visibility = "hidden";
+         studentProfile.style.zIndex = "-1000";
+         studentProfileAppear.innerHTML = `<span class="material-symbols-outlined">
+account_circle
+</span>`;
+         studentAppear = "off";
+     }
+  });
+
+var videoUploadTab = document.querySelector('.videoUpload');
+var lessonBtn = document.querySelector('.lessoner');
+var closeBtn = document.querySelector('.close');
+lessonBtn.addEventListener('click', () => {
+    videoUploadTab.style.visibility = "visible";
+    videoUploadTab.style.zIndex = "1000";
+});
+closeBtn.addEventListener('click', () => {
+    videoUploadTab.style.visibility = "hidden";
+    videoUploadTab.style.zIndex = "-1000";
+});
+
+var videoCategory = document.querySelector('#videoType');
+var liveRecoderHolder = document.querySelector('.liveRecord');
+var oldVideoUpload = document.querySelector('.oldvideoUpload');
+videoCategory.addEventListener('change', (e) => {
+   var category = e.target.value;
+    if (category === "Video Upload") {
+        oldVideoUpload.style.display = 'block';
+        liveRecoderHolder.style.display = "none";
+    } else {
+        liveRecoderHolder.style.display = "block";
+        oldVideoUpload.style.display = 'none';
+    }
+});
+
+             
