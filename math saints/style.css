@@ -4,7 +4,7 @@ the website theme colors
     
     rgb(1, 238, 255) --- cyan
 
-  RGB(98, 167, 204)
+  rgb(98, 167, 204)
 
 rgb(37, 211, 102) --- good green
 
@@ -178,6 +178,7 @@ h2 {
    align-items: center;
    justify-content: center;
    gap: 10px;
+  text-decoration: none;
    padding: 10px;
  }
 .detail img {
@@ -220,4 +221,27 @@ h2 {
 footer a {
   text-decoration: none;
   color: whitesmoke;
-   }
+}
+.alert{
+  position: fixed;
+   left: 0;
+  right: 0; 
+  z-index: 1000;
+  width: 100%;
+  font-size: 2rem;
+  height: 100vh;
+  color: rgb(255,0,255);
+  text-shadow: 0 0 25px green; 
+  background: rgba(0,0,0,0.8);
+  display: grid;
+  place-content: center;
+  color: white;
+  animation: scroll 0.5s linear forwards;
+}
+@keyframes scroll{
+  0%{
+    top: 100vh; opacity: 0;
+  }100%{
+    top: 0; opacity: 1; bottom: 0;
+  }
+}
