@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css"/>
   <link rel="stylesheet" href="pay.css"/>
+  <link rel="stylesheet" href="tutor.css"/>
   
   <link rel="icon" type="image/x-icon" href="logo.png"/>
   <title>Math Saints</title>
@@ -26,7 +27,6 @@
   </style>
 </head>
 <body class="ubuntu-light">
-<script src="https://checkout.flutterwave.com/v3.js"></script>
   <div class="allholder">
   <div class="heading">
   <img src="logo.png">
@@ -72,7 +72,7 @@
       <div id="tab3" class="tabs">
         <h3 class="ubuntu-bold-italic">Subscription Packages</h3>
         <div class="free">
-          <h1>0.00 EUR</h1>
+          <h1>0.00 POUNDS</h1>
           <ul>
             <li>Get Notified of new concepts</li>
             <li>Get Notified of new videos</li>
@@ -81,7 +81,7 @@
           <button class="subsribe">Get</button>
         </div>
         <div class="pro1">
-          <h1>12.00 EUR</h1>
+          <h1>12.00 POUNDS</h1>
           <ul>
             <li>Get Notified of new concepts</li>
             <li>Get Notified of new videos</li>
@@ -91,7 +91,7 @@
           <button class="subsribe">Subscribe</button>          
         </div>
         <div class="pro2">
-          <h1>15.00 EUR <span>/60 mins</span></h1>
+          <h1>15.00 POUNDS <span>/60 mins</span></h1>
            <ul>
             <li>Get Notified of new concepts</li>
             <li>Get Notified of new videos</li>
@@ -104,7 +104,7 @@
           <button class="subsribe">Subscribe</button>
         </div>
         <div class="pro3">
-          <h1>20.00 EUR <span>/90 mins</span></h1>
+          <h1>20.00 POUNDS <span>/90 mins</span></h1>
            <ul>
             <li>Get Notified of new concepts</li>
             <li>Get Notified of new videos</li>
@@ -117,7 +117,7 @@
           <button class="subsribe">Subscribe</button>
         </div>
         <div class="pro4">
-          <h1>25.00 EUR <span>/120 mins</span></h1>
+          <h1>25.00 POUNDS <span>/120 mins</span></h1>
            <ul>
             <li>Get Notified of new concepts</li>
             <li>Get Notified of new videos</li>
@@ -136,32 +136,120 @@
   </div>
   </div>
    <div class="tutortab tabb">
-    <h3>Hello tutor</h3>
+     <div class="header">
+       <h1>Math Saints</h1>
+       <button id="tutor-profile-appear"><span class="material-symbols-outlined">
+account_circle
+</span></button>
+       <div id="tutor-profile" class="contact-info">
+         <div class="image-wrap">
+         <img src="person2.webp"/>
+         </div>
+         <h4 class="tutor-name-holder"></h4>
+         <div class="tutor-email-holder"></div>
+         <h2 class="tutor-role"></h2>
+         <button class="sign-out">Sign Out</button>
+       </div>
+     </div>
+     <div class="body">
+       <h3 class="tutor-welcome">Welcome, </h3>
+       <button class="lessoner">Create Lesson</button>
+       <div class="videoUpload">
+         <button class="close"><span class="material-symbols-outlined">
+close
+</span></button>
+         <div class="img-hold">
+         <img src="logo.png"/>
+         </div>
+         <h3>Create a Lesson</h3>
+         <h4>Title:</h4>
+         <input type="text" id="videoTitle" placeholder="Simplified Maths"/>
+         <h4>Topic:</h4>
+         <select id="videoTopic">
+           <option value="Arithmetic">Arithemetic</option>
+           <option value="Algebra">Algebra</option>
+           <option value="Geometry">Geometry</option>
+           <option value="Trigonometry">Trigonometry</option>
+           <option value="Calculus">Calculus</option>
+           <option value="Statistics">Statistics</option>
+           <option value="Probability">Probability</option>
+           <option value="Number Theory">Number Theory</option>
+            <option value="Linear Algebra">Linear Algebra</option>
+           <option value="Topology">Topology</option>
+           <option value="Mathematical Logic">Mathematical Logic</option>
+         </select>
+         <h4>Category:</h4>
+         <select id="videoType">
+           <option value="Video Upload">Video Upload</option>
+           <option value="Live Video">Live Video</option>
+         </select>
+         <div class="liveRecord">
+           <button id="startLiveRecord">Start Recording</button>
+         </div>
+         <div class="oldvideoUpload">
+           <input type="file" id="old-lesson" accept="video/mp4, video/mpeg, video/webm">
+           <button id="old-vid-upload">Upload Lesson</button>
+         </div>
+       </div>
+       <div class="lesson-holder">
+         
+       </div>
+       <div class="footer">
+         "Let's have fun solving problems and numbers"
+       </div>
+     </div>
   </div>
   <div class="studenttab tabb">
-    <h3>Hello student</h3>
+    <div class="header">
+       <h1>Math Saints</h1>
+       <button id="student-profile-appear"><span class="material-symbols-outlined">
+account_circle
+</span></button>
+       <div id="student-profile" class="contact-info">
+         <div class="image-wrap">
+         <img src="person1.webp"/>
+         </div>
+         <h4 class="student-name-holder"></h4>
+         <div class="student-email-holder"></div>
+         <h2 class="student-role"></h2>
+         <button class="sign-out">Sign Out</button>
+       </div>
+     </div>
+    <div class="body">
+      <h3 class="student-welcome"> Welcome, </h3>
+      
+    </div>
+    <div class="footer">
+         "Let's have fun solving problems and numbers"
+       </div>
   </div>
+  <script src="https://checkout.flutterwave.com/v3.js"></script>
   <script src="apple.js"></script>
   <script type="module">
   // Import the functions you need from the SDKs you need
   import { initializeApp } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-analytics.js";
   import{ getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, updateProfile, onAuthStateChanged, signInWithPopup, GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-auth.js";
   import { getDatabase, get, set, push, query, onValue, ref, update, remove, orderByChild } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-database.js";
+  import { getStorage, uploadBytes, uploadString, ref as sRef, getDownloadURL } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-storage.js";
+
   
   const firebaseConfig = {
-    apiKey: "AIzaSyDkTt3jXbvX762n7D05GmfnV_pZ38inTyo",
-    authDomain: "mathsaints-c5400.firebaseapp.com",
-    projectId: "mathsaints-c5400",
-    storageBucket: "mathsaints-c5400.firebasestorage.app",
-    messagingSenderId: "198042881627",
-    appId: "1:198042881627:web:56c5c4629fcf8fd2a5b97e"
+    apiKey: "AIzaSyC7fCNZe8l-fGhhKsMF0JVcymh8uCv1zyI",
+    authDomain: "lavender-app-eeeb0.firebaseapp.com",
+    databaseURL: "https://lavender-app-eeeb0-default-rtdb.firebaseio.com",
+    projectId: "lavender-app-eeeb0",
+    storageBucket: "lavender-app-eeeb0.appspot.com",
+    messagingSenderId: "666797584961",
+    appId: "1:666797584961:web:8d9576c372d72fe0938cc0",
+    measurementId: "G-ECZ1J6F0KK"
   };
-  
 
   // Initialize Firebase
   const app = initializeApp(firebaseConfig);
   const auth = getAuth(app);
   const db = getDatabase(app);
+  const storage = getStorage(app);
   
 
   //login and sign in functions
@@ -176,6 +264,29 @@
   var loginTab = document.querySelector('.login');
 var signInTab = document.querySelector('.sign-up');
 
+  var studentNameHolder = document.querySelector(".student-name-holder");
+  var studentEmailHolder = document.querySelector(".student-email-holder");
+  var studentRole = document.querySelector(".student-role");
+  var studentWelcome = document.querySelector(".student-welcome");
+  
+  var tutorNameHolder = document.querySelector(".tutor-name-holder");
+  var tutorEmailHolder = document.querySelector(".tutor-email-holder");
+  var tutorRole = document.querySelector(".tutor-role");
+  var tutorWelcome = document.querySelector(".tutor-welcome");
+  
+  var signOutBtns = document.querySelectorAll(".sign-out");
+  signOutBtns.forEach(btn => {
+    btn.addEventListener("click", () => {
+      studentNameHolder.textContent = "";
+      studentEmailHolder.textContent = "";
+      
+      tutorNameHolder.textContent = "";
+      tutorEmailHolder.textContent = "";
+      
+      window.location.href = "index.html";
+    });
+  });
+  
   
   var signupBtns = document.querySelectorAll(".subsribe");
   signupBtns.forEach(buton => {
@@ -202,13 +313,17 @@ var signInTab = document.querySelector('.sign-up');
         .then(() => {
           get(userRef).then((snapshot) => {
             var data = snapshot.val();
-            signTab.style.visibility = "hidden";
+            signTab.style.display = "none";
             signInTab.style.visibility = "hidden";
             loginTab.style.visibility = "hidden";
             
-            if (signPath = "Student") {
-              studentTab.style.visibilty = "visible";
-              tutorTab.style.visibility = "hidden";
+            if (signPath === "Student") {
+              studentTab.style.display = "block";
+              tutorTab.style.display = "none";
+              studentNameHolder.textContent = data.username;
+              studentWelcome.textContent += data.username;
+              studentEmailHolder.textContent = data.email;
+              studentRole.textContent = data.category;
             }
           });
         });
@@ -221,62 +336,225 @@ var signInTab = document.querySelector('.sign-up');
   var loginPasswordInput = document.querySelector("#login-password");
   var loginBtn = document.querySelector("#login-button");
   loginBtn.addEventListener("click", () => {
-    var loginUsername = loginUsernameInput.value.trim();
-    var loginPassword = loginPasswordInput.value.trim();
-    if (loginUsername !== "" && loginPassword !== "") {
-      var loginRef = ref(db, "users/");
+  var loginUsername = loginUsernameInput.value.trim();
+  var loginPassword = loginPasswordInput.value.trim();
+  if (loginUsername !== "" && loginPassword !== "") {
+    var loginRef = ref(db, "users/");
     get(loginRef)
-    .then((snapshot) => {
-      var data = snapshot.val();
-      Object.keys(data).forEach((key) => {
-        if (data[key].username == loginUsername) {
-          if (data[key].password == loginPassword) {
-            if (data[key].category == "Student") {
-              signTab.style.visibility = "hidden";
-              signInTab.style.visibility = "hidden";
-              loginTab.style.visibility = "hidden";
-              
-              studentTab.style.visibilty = "visible";
-              tutorTab.style.visibility = "hidden";
-            } 
-          } else {
-            showAlert("Wrong Password...");
+      .then((snapshot) => {
+        var data = snapshot.val();
+        var accountFound = false;
+        Object.keys(data).forEach((key) => {
+          if (data[key].username === loginUsername) {
+            accountFound = true; 
+            if (data[key].password === loginPassword) {
+              if (data[key].category === "Student") {
+                signTab.style.display = "none";
+                signInTab.style.visibility = "hidden";
+                loginTab.style.visibility = "hidden";
+
+                studentTab.style.display = "block";
+                tutorTab.style.display = "none";
+                studentNameHolder.textContent = data[key].username;
+                studentWelcome.textContent += data[key].username;
+                studentEmailHolder.textContent = data[key].email;
+                studentRole.textContent = data[key].category;
+              } else {
+                signTab.style.display = "none";
+                signInTab.style.visibility = "hidden";
+                loginTab.style.visibility = "hidden";
+
+                studentTab.style.display = "none";
+                tutorTab.style.display = "block";
+                tutorNameHolder.textContent = data[key].username;
+                tutorWelcome.textContent += data[key].username;
+                tutorEmailHolder.textContent = data[key].email;
+                tutorRole.textContent = data[key].category;
+              }
+            } else {
+              showAlert("Wrong Password...");
+            }
           }
-        } else {
+        });
+
+        if (!accountFound) {
           showAlert("That account doesn't exist...");
         }
-        
       });
-    });
-    } else {
-      showAlert("Please fill the fields");
-    }
-    
-  });
-  
-  
+  } else {
+    showAlert("Please fill the fields");
+  }
+});
+
   
   //utility functions
   var chooser = document.querySelector('#sign-up-path');
 var btn1 = document.getElementById('back');
 var btntotutor = document.getElementById('fro');
-var tutorCodeInput = document.querySelector('#tode');
+var tutorCodeInputHolder = document.querySelector('#tode');
 chooser.addEventListener('change', (e) => {
     var choice = e.target.value;
    btntotutor.replaceWith(btntotutor.cloneNode(true));
    btntotutor = document.getElementById('fro'); 
 
     if (choice === 'Tutor') {
-        tutorCodeInput.style.visibility = 'visible';
-        btntotutor.innerHTML = "SIGN UP";
+        tutorCodeInputHolder.style.visibility = 'visible';
+        btntotutor.innerHTML = "Sign up";
         btntotutor.addEventListener('click', tutorSignUp);
     } else {
-        tutorCodeInput.style.visibility = 'hidden';
+        tutorCodeInputHolder.style.visibility = 'hidden';
         btntotutor.innerHTML = `<a href="#tab3" class="linknext">Next</a>`;
     }
 });
 
+  var tutorCodeInput = document.querySelector("#tutor-code");
+  function tutorSignUp() {
+    var tutorCode = tutorCodeInput.value.trim();
+    if (tutorCode !== "") {
+      
+      var tutorRef = ref(db, "tutorcode/");
+   get(tutorRef)
+      .then((snapshot) => {
+        if (snapshot.exists()) {
+          var data = snapshot.val();
+          if (data.standardcode === tutorCode) {
+            
+      var email = emailInput.value;
+      var password = passwordInput.value;
+      var username = usernameInput.value;
+      var signPath = signupPath.value;
+      var userRef = ref(db, "users/" + username);
+      
+      if (email !== "" && password !== "" && username !== "") {
+      createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        var user = userCredential.user;
+         set(userRef, {
+          username: username,
+          email: email,
+          password: password,
+          uid: user.uid,
+          category: signPath
+        }).then(() => {
+              
+          get(userRef)
+          .then((snapshot) => {
+            var tutordata = snapshot.val();
+              signTab.style.display = "none";
+              signInTab.style.visibility = "hidden";
+              loginTab.style.visibility = "hidden";
+              
+              studentTab.style.display = "none";
+              tutorTab.style.display = "block";
+              tutorNameHolder.textContent = tutordata.username;
+              tutorWelcome.textContent += tutordata.username;
+              tutorEmailHolder.textContent = tutordata.email;
+              tutorRole.textContent = tutordata.category;
+          });
+          
+        });
+      });
+      }
+          } else {
+            showAlert("Wrong Tutor code.... Please try as a student.");
+            tutorCodeInput.value = "";
+          }
+        }
+      });
+      
+    } else {
+      showAlert("please fill the feilds...");
+    }
+   
+  }
+var oldLesson = document.querySelector('#old-lesson');
+var oldLessonUploadBtn = document.querySelector("#old-vid-upload"); 
+var oldVideoUpload = document.querySelector('.oldvideoUpload');
+  var videoFile;
+  var videoName;
+oldLesson.addEventListener('change', (e) => {
+    videoFile = e.target.files[0];
+    videoName = videoFile.name;
+    var reader = new FileReader();
 
+    reader.onload = function (event) {
+        
+        var existingVideo = oldVideoUpload.querySelector('#videoToUpload');
+        if (existingVideo) {
+            oldVideoUpload.removeChild(existingVideo);
+        }
+        
+        var video = document.createElement('video');
+        video.id = "videoToUpload";
+        video.controls = true;
+        video.style.width = '250px';
+        video.style.height = '300px';
+        video.src = event.target.result;
+        oldVideoUpload.appendChild(video);
+    };
+
+    reader.readAsDataURL(videoFile);
+});
+  
+  var videoTitle = document.querySelector("#videoTitle");
+  var videoTopic = document.querySelector("#videoTopic");
+  var tutorName = document.querySelector(".tutor-name-holder");
+oldLessonUploadBtn.addEventListener("click", () => {
+  var videoRef = sRef(storage, `videos/${videoName}`);
+  uploadBytes(videoRef, videoFile)
+  .then((snapshot) => {
+    var timeStamp = new Date().getTime();
+    var vidataRef = push(ref(db, `videoinfo/`));
+    set(vidataRef, {
+      videoName: videoName,
+      videoTitle: videoTitle.value,
+      videoTopic: videoTopic.value,
+      tutorName: tutorName.textContent,
+      timestamp: timeStamp
+    }).then(() => {
+      alert("yep...");
+       var existingVideo = oldVideoUpload.querySelector('#videoToUpload');
+        if (existingVideo) {
+            oldVideoUpload.removeChild(existingVideo);
+        }
+     oldLesson.value = "";
+     videoTitle.value = "";
+      var videoUploadTab = document.querySelector('.videoUpload');
+    videoUploadTab.style.visibility = "hidden";
+    videoUploadTab.style.zIndex = "-1000";
+    });
+    
+  });
+});
+  var lessonHolder = document.querySelector(".lesson-holder");
+   var tutorVidQuery = query(ref(db, `videoinfo/`), orderByChild('timestamp'));
+  onValue(tutorVidQuery, (snapshot) => {
+    lessonHolder.innerHTML = "";
+    var data = snapshot.val();
+    Object.keys(data).sort((a,b) => data[a].timestamp - data[b].timestamp).forEach((key) => {
+      if (data[key].tutorName === tutorName.textContent) {
+        var vidtitle = data[key].videoTitle;
+        var vidtopic = data[key].videoTitle;
+        var vidtutor = data[key].tutorName;
+        var vidname = data[key].videoName;
+        
+        var lessonRef = sRef(storage, "videos/" + vidname);
+        getDownloadURL(lessonRef)
+        .then((url) => {
+          var videoCard = document.createElement("div");
+          videoCard.className = "video-card";
+          videoCard.innerHTML = `
+          <video controls>
+          <source src="${url}"/>
+          </video>
+          <h4>${vidtitle}, ${vidtopic}</h4>
+          <div>${vidtutor}</div>
+          `;
+          lessonHolder.appendChild(videoCard);
+        });
+      }
+    });
+  });
 </script>
 </body>
 </html>
