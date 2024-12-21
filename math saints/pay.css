@@ -158,7 +158,78 @@ select {
   border-radius: 20px;
 }
 .tabb {
+  position: absolute;
   width: 100%;
   height: 100%;
-  visibility: hidden;
+  display: none;
 }
+.header {
+  width: 100%;
+  height: 15vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background: linear-gradient(130deg, rgb(37, 211, 102), rgb(37, 211, 102), rgba(37, 211, 102, 0.5), transparent, transparent, transparent), url('inter.jpg.png');
+  background-size: 100% 100%;
+}
+.header h1 {
+   font-size: 2rem;
+}
+.header button {
+  border: none;
+  background: rgb(37, 211, 102);
+  border-radius: 100%;
+  width: 50px;
+  height: 50px;
+  color: white;
+}
+.contact-info {
+  position: absolute;
+  top: 15vh;
+  right: 0;
+  visibility: hidden;
+  z-index: -1000;
+  width: 300px;
+  height: 400px;
+  background: rgb(37, 211, 102);
+  border: 1px solid #70ff00;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  }
+.contact-info img {
+  width: 150px;
+  height: 150px;
+  border-radius: 100%;
+  border: 1px solid white;
+}
+.image-wrap {
+  position: relative;
+}
+.contact-info .image-wrap::before {
+  content: "";
+  position: absolute;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  width: 297px;
+  height: 150px;
+  margin-left: -73px;
+  margin-top: -34px;
+  background: rgb(98, 167, 204);
+  z-index: -1;
+  
+}
+.contact-info button {
+  width: 90%;
+  border: 1px solid #70ff00;
+  border-radius: 15px;
+  background: rgb(98, 167, 204);
+  color: white;
+  display: grid;
+  place-content: center;
+  font-size: 1.5rem;
+  }
