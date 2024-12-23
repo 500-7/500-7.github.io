@@ -1,0 +1,19 @@
+.student-welcome {
+  padding: 20px;
+  text-shadow: 0 0 10px #70ff00;
+  font-size: 2rem;
+}
+#student-lessons {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  justify-items: center;
+  align-items: center;
+}
+.footer {
+  display: grid;
+  place-content: center;
+  text-align: center;
+  font-size: 1.3rem;
+  padding: 20px;
+}
+
