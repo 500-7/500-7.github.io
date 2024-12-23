@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="style.css"/>
   <link rel="stylesheet" href="pay.css"/>
   <link rel="stylesheet" href="tutor.css"/>
+  <link rel="stylesheet" href="student.css"/>
   
   <link rel="icon" type="image/x-icon" href="logo.png"/>
   <title>Math Saints</title>
@@ -191,10 +192,35 @@ close
            <button id="old-vid-upload">Upload Lesson</button>
          </div>
        </div>
+       <div class="liveLesson">
+         <video id="livefeed" autoplay="" muted="">
+           
+         </video>
+         <h3 id="livefeedTitle"></h3>
+         <h5 id="livetutor"></h5>
+         zoom:
+           <input type="range" id="zoomSlider" min="1" max="3" step="0.1" value="1">
+         <button class="livebtns" id="startlive">Start Lesson</button>
+         <button class="livebtns" id="endlive">End Lesson</button>
+         <div id="commentsholder">
+           <div id="comments">
+             <video id="receiverVid" autoplay="" >
+               
+             </video>
+           </div>
+           <div class="com-sender">
+           <input type="text" id="comment" placeholder="Comment..."/>
+             <button><span class="material-symbols-outlined">
+send
+</span></button>
+           </div>
+         </div>
+       </div>
        <div class="lesson-holder">
-         
+          
        </div>
        <div class="footer">
+         <hr>
          "Let's have fun solving problems and numbers"
        </div>
      </div>
@@ -217,13 +243,20 @@ account_circle
      </div>
     <div class="body">
       <h3 class="student-welcome"> Welcome, </h3>
-      
+      <div id="student-lessons">
+        
+      </div>
+      <div>
+        
+      </div>
     </div>
     <div class="footer">
+      <hr>
          "Let's have fun solving problems and numbers"
        </div>
   </div>
   <script src="https://checkout.flutterwave.com/v3.js"></script>
+  <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
   <script src="apple.js"></script>
   <script type="module">
   // Import the functions you need from the SDKs you need
@@ -370,6 +403,7 @@ var signInTab = document.querySelector('.sign-up');
                 tutorWelcome.textContent += data[key].username;
                 tutorEmailHolder.textContent = data[key].email;
                 tutorRole.textContent = data[key].category;
+                tutorLessonDownload();
               }
             } else {
               showAlert("Wrong Password...");
@@ -555,6 +589,174 @@ oldLessonUploadBtn.addEventListener("click", () => {
       }
     });
   });
+  function tutorLessonDownload () {
+    var tutorLessonRef = ref(db, "videoinfo/");
+    get(tutorLessonRef)
+    .then((snapshot) => {
+      lessonHolder.innerHTML = "";
+    var data = snapshot.val();
+    Object.keys(data).sort((a,b) => data[a].timestamp - data[b].timestamp).forEach((key) => {
+      if (data[key].tutorName === tutorName.textContent) {
+        var vidtitle = data[key].videoTitle;
+        var vidtopic = data[key].videoTopic;
+        var vidtutor = data[key].tutorName;
+        var vidname = data[key].videoName;
+        
+        var lessonRef = sRef(storage, "videos/" + vidname);
+        getDownloadURL(lessonRef)
+        .then((url) => {
+          var videoCard = document.createElement("div");
+          videoCard.className = "video-card";
+          videoCard.innerHTML = `
+          <video controls>
+          <source src="${url}"/>
+          </video>
+          <h4>${vidtitle}, ${vidtopic}</h4>
+          <div>${vidtutor}</div>
+          `;
+          lessonHolder.appendChild(videoCard);
+        });
+      }
+    });
+    });
+  }
+  //live lessons
+var startLiveLesson = document.querySelector('#startLiveRecord');
+var publishLiveLesson = document.querySelector("#startlive");
+var endLiveLesson = document.querySelector('#endlive');
+var liveLessonTab = document.querySelector('.liveLesson');
+var videoFeed = liveLessonTab.querySelector('#livefeed');
+var receiverVideo = document.querySelector("#receiverVid");
+var liveFeedTitle = liveLessonTab.querySelector('#livefeedTitle');
+var liveTutor = liveLessonTab.querySelector('#livetutor');
+
+  var videoTitle = document.querySelector("#videoTitle");
+  var videoTopic = document.querySelector("#videoTopic");
+  var tutorName = document.querySelector(".tutor-name-holder");
+
+  const zoomSlider = document.getElementById('zoomSlider');
+let mediaRecorder;
+let chunks = []; 
+let videoTrack;
+
+startLiveLesson.addEventListener('click', () => {
+    videoUploadTab.style.visibility = "hidden";
+    videoUploadTab.style.zIndex = "-1000";
+    liveLessonTab.style.visibility = 'visible';
+    liveLessonTab.style.zIndex = "1000";
+    
+    liveFeedTitle.textContent = videoTitle.value.trim() + ", " + videoTopic.value;
+    liveTutor.textContent = tutorName.textContent;
+    
+    navigator.mediaDevices.getUserMedia({ video: true, audio: true })
+        .then(stream => {
+            videoFeed.srcObject = stream;
+            
+            videoTrack = stream.getVideoTracks()[0];
+            
+            mediaRecorder = new MediaRecorder(stream);
+            chunks = [];
+
+            mediaRecorder.ondataavailable = event => {
+                if (event.data.size > 0) {
+                    chunks.push(event.data);
+                }
+            };
+
+            mediaRecorder.onstop = () => {
+                const blob = new Blob(chunks, { type: 'video/webm' }); 
+                var videoName = videoTitle.value + ".web/m";
+                var videoRef = sRef(storage, `videos/${videoName}`);
+  uploadBytes(videoRef, blob)
+  .then((snapshot) => {
+    var timeStamp = new Date().getTime();
+    var vidataRef = push(ref(db, `videoinfo/`));
+    set(vidataRef, {
+      videoName: videoName,
+      videoTitle: videoTitle.value,
+      videoTopic: videoTopic.value,
+      tutorName: tutorName.textContent,
+      timestamp: timeStamp
+    }).then(() => {
+       
+     videoTitle.value = "";
+      var videoUploadTab = document.querySelector('.videoUpload');
+    videoUploadTab.style.visibility = "hidden";
+    videoUploadTab.style.zIndex = "-1000";
+    });
+    
+  });
+                
+                liveLessonTab.style.visibility = 'hidden';
+                liveLessonTab.style.zIndex = "-1000";
+                stream.getTracks().forEach(track => {
+                    track.stop();
+                });
+            };
+
+            mediaRecorder.start(); // Moved mediaRecorder.start() outside onstop
+        })
+        .catch(error => {
+            console.error('Error accessing media devices:', error);
+        });
+    
+});
+  
+endLiveLesson.addEventListener('click', () => {
+    if (mediaRecorder) {
+        mediaRecorder.stop();
+    } else {
+        console.error('No active media recorder to stop!');
+    }
+});
+zoomSlider.addEventListener('input', (event) => {
+    if (videoTrack) {
+        const zoomLevel = event.target.value;
+
+        // Check if zoom is supported
+        const capabilities = videoTrack.getCapabilities();
+        if (capabilities.zoom) {
+            videoTrack.applyConstraints({
+                advanced: [{ zoom: zoomLevel }]
+            }).catch(error => {
+                console.error('Error applying zoom:', error);
+            });
+        } else {
+            alert('Zoom is not supported on this device.');
+        }
+    }
+});
+var studentLessonHolder = document.querySelector("#student-lessons");
+  var tutorVidQuery = query(ref(db, `videoinfo/`), orderByChild('timestamp'));
+  onValue(tutorVidQuery, (snapshot) => {
+    studentLessonHolder.innerHTML = "";
+    var data = snapshot.val();
+    Object.keys(data).sort((a,b) => data[b].timestamp - data[a].timestamp).forEach((key) => {
+      
+        var vidtitle = data[key].videoTitle;
+        var vidtopic = data[key].videoTopic;
+        var vidtutor = data[key].tutorName;
+        var vidname = data[key].videoName;
+        
+        var lessonRef = sRef(storage, "videos/" + vidname);
+        getDownloadURL(lessonRef)
+        .then((url) => {
+          var videoCard = document.createElement("div");
+          videoCard.className = "video-card";
+          videoCard.innerHTML = `
+          <video controls>
+          <source src="${url}"/>
+          </video>
+          <h4>${vidtitle}, ${vidtopic}</h4>
+          <div>${vidtutor}</div>
+          `;
+          studentLessonHolder.appendChild(videoCard);
+        });
+      
+    });
+  });
+  
+  
 </script>
 </body>
-</html>
+           </html>
