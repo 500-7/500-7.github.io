@@ -31,6 +31,28 @@
   background-size: cover;
   background-repeat: no-repeat;
 }
+  .video-card {
+    width: auto;
+    min-width: 300px;
+    height: 350px;
+    background: rgb(37, 211, 102);
+    border-radius: 10px;
+    
+  }
+  .video-card video {
+    width: 100%;
+    height: 80%;
+  }
+  video-card h4 {
+    width: 100%;
+    height: 10%;
+    padding: 20px;
+  }
+  .video-card div {
+    width: 100%;
+    height: 10%;
+    padding: 20px;
+  } 
 </style>
 </head>
 <body class="ubuntu-light">
@@ -101,10 +123,10 @@ done_outline
   <img src="newflow.jpg.png" class="flowImage"/>
   <hr>
   <footer>
-    <div class="detail">
+    <a href="mailto:mathsaints085@gmail.com" class="detail">
       <img src="logo.png">
-      <h3>Math Saints</h3>
-    </div>
+      <h2>Math Saints</h2>
+    </a>
     
     <div class="contact">
       <div class="logo">
@@ -129,5 +151,60 @@ chat
       <h3>Dalse Corp.</h3>
     </a>
   </footer>
+  <script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-analytics.js";
+  import{ getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, updateProfile, onAuthStateChanged, signInWithPopup, GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-auth.js";
+  import { getDatabase, get, set, push, query, onValue, ref, update, remove, orderByChild } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-database.js";
+  import { getStorage, uploadBytes, uploadString, ref as sRef, getDownloadURL } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-storage.js";
+
+  
+  const firebaseConfig = {
+    apiKey: "AIzaSyC7fCNZe8l-fGhhKsMF0JVcymh8uCv1zyI",
+    authDomain: "lavender-app-eeeb0.firebaseapp.com",
+    databaseURL: "https://lavender-app-eeeb0-default-rtdb.firebaseio.com",
+    projectId: "lavender-app-eeeb0",
+    storageBucket: "lavender-app-eeeb0.appspot.com",
+    messagingSenderId: "666797584961",
+    appId: "1:666797584961:web:8d9576c372d72fe0938cc0",
+    measurementId: "G-ECZ1J6F0KK"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+  const db = getDatabase(app);
+  const storage = getStorage(app);
+  
+  var reccentLessonHolder = document.querySelector("#lessonHolder");
+  var tutorVidQuery = query(ref(db, `videoinfo/`), orderByChild('timestamp'));
+  onValue(tutorVidQuery, (snapshot) => {
+    reccentLessonHolder.innerHTML = "";
+    var data = snapshot.val();
+    Object.keys(data).sort((a,b) => data[b].timestamp - data[a].timestamp).forEach((key) => {
+      
+        var vidtitle = data[key].videoTitle;
+        var vidtopic = data[key].videoTopic;
+        var vidtutor = data[key].tutorName;
+        var vidname = data[key].videoName;
+        
+        var lessonRef = sRef(storage, "videos/" + vidname);
+        getDownloadURL(lessonRef)
+        .then((url) => {
+          var videoCard = document.createElement("div");
+          videoCard.className = "video-card";
+          videoCard.innerHTML = `
+          <video>
+          <source src="${url}"/>
+          </video>
+          <h4>${vidtitle}, ${vidtopic}</h4>
+          <div>${vidtutor}</div>
+          `;
+          reccentLessonHolder.appendChild(videoCard);
+        });
+      
+    });
+  });
+  </script>
 </body>
 </html>
