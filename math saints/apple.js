@@ -136,4 +136,66 @@ videoCategory.addEventListener('change', (e) => {
     }
 });
 
-             
+var publishLiveLesson = document.querySelector("#startlive");
+var endLiveLesson = document.querySelector('#endlive');
+var liveLessonTab = document.querySelector('.liveLesson');
+var videoFeed = liveLessonTab.querySelector('#livefeed');
+var receiverVideo = document.querySelector("#receiverVid");
+
+let localStream, pc1, pc2;
+const offerOptions = { offerToReceiveAudio: true, offerToReceiveVideo: true };
+
+publishLiveLesson.addEventListener("click", () => {
+    
+    if (videoFeed.captureStream) {
+      localStream = videoFeed.captureStream();
+        call();
+    } else if (videoFeed.mozCaptureStream) {
+      localStream = videoFeed.mozCaptureStream();
+        call();
+    } else {
+      showAlert("Your browser does not Support this..");
+    }
+  });
+  function call () {
+      showAlert('Starting Call');
+      pc1 = createPeerConnection('pc1');
+      pc2 = createPeerConnection('pc2', (event) => {
+          receiverVideo.srcObject = event.streams[0];
+      });
+      
+      localStream.getTracks().forEach((track) => pc1.addTrack(track, localStream));
+      
+      pc1.createOffer(offerOptions).then((offer) => {
+    pc1.setLocalDescription(offer);
+    pc2.setRemoteDescription(offer);
+    return pc2.createAnswer();
+  }).then((answer) => {
+    pc2.setLocalDescription(answer);
+    pc1.setRemoteDescription(answer);
+  }).catch((error) => console.error('Error during SDP exchange:', error));
+
+  }
+function createPeerConnection(name, onTrackCallback) {
+  const pc = new RTCPeerConnection();
+  console.log(`Created ${name}`);
+
+  pc.onicecandidate = (event) => {
+    if (event.candidate) {
+      const otherPC = name === 'pc1' ? pc2 : pc1;
+      otherPC.addIceCandidate(event.candidate).catch((err) =>
+        console.error(`${name} failed to add ICE candidate`, err)
+      );
+    }
+  };
+
+  pc.oniceconnectionstatechange = () => {
+    console.log(`${name} ICE state: ${pc.iceConnectionState}`);
+  };
+
+  if (onTrackCallback) {
+    pc.ontrack = onTrackCallback;
+  }
+
+  return pc;
+        }
