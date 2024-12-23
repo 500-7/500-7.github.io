@@ -1,7 +1,7 @@
 .tab {
   display: grid;
-  max-width: 350px;
-  height: 220px;
+  min-width: 350px;
+  height: auto;
   background: rgb(37, 211, 102);
   border-radius: 20px;
   margin: 5px;
@@ -29,8 +29,9 @@
   box-shadow: 0 0 10px rgb(1, 238, 255);
   border: 1px solid rgb(0, 215, 255);
 }
-.tab p {
-  font-size: 1.2rem;
+.tab ul {
+  font-size: 1rem;
+  padding: 20px;
   grid-row: 2/5;
   grid-column: 1/5;
 }
@@ -46,4 +47,11 @@ h3 {
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
 }
+h4 {
+  width: 100%;
+  text-align: center;
+  font-size: 1.5rem;
+  text-decoration: 5px aqua underline;
+}
+
 
