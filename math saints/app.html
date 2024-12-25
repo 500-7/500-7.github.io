@@ -166,19 +166,360 @@ close
          <h4>Title:</h4>
          <input type="text" id="videoTitle" placeholder="Simplified Maths"/>
          <h4>Topic:</h4>
-         <select id="videoTopic">
-           <option value="Arithmetic">Arithemetic</option>
-           <option value="Algebra">Algebra</option>
-           <option value="Geometry">Geometry</option>
-           <option value="Trigonometry">Trigonometry</option>
-           <option value="Calculus">Calculus</option>
-           <option value="Statistics">Statistics</option>
-           <option value="Probability">Probability</option>
-           <option value="Number Theory">Number Theory</option>
-            <option value="Linear Algebra">Linear Algebra</option>
-           <option value="Topology">Topology</option>
-           <option value="Mathematical Logic">Mathematical Logic</option>
-         </select>
+         <select name="maths_topics" id="videoTopic">
+           <optgroup label="Higher GSCE Maths">
+  <optgroup label="Number">
+    <option>Prior knowledge check</option>
+    <option>Number problems and reasoning</option>
+    <option>Place value and estimating</option>
+    <option>HCF and LCM</option>
+    <option>Calculating with powers (indices)</option>
+    <option>Zero, negative and fractional indices</option>
+    <option>Powers of 10 and standard form</option>
+    <option>Surds</option>
+  </optgroup>
+  <optgroup label="Algebra">
+    <option>Prior knowledge check</option>
+    <option>Algebraic indices</option>
+    <option>Expanding and factorising</option>
+    <option>Equations</option>
+    <option>Formulae</option>
+    <option>Linear sequences</option>
+    <option>Non-linear sequences</option>
+    <option>More expanding and factorising</option>
+  </optgroup>
+  <optgroup label="Interpreting and representing data">
+    <option>Prior knowledge check</option>
+    <option>Statistical diagrams 1</option>
+    <option>Time series</option>
+    <option>Scatter graphs</option>
+    <option>Line of best fit</option>
+    <option>Averages and range</option>
+    <option>Statistical diagrams 2</option>
+  </optgroup>
+  <optgroup label="Fractions, ratio and percentages">
+    <option>Prior knowledge check</option>
+    <option>Fractions</option>
+    <option>Ratios</option>
+    <option>Ratio and proportion</option>
+    <option>Percentages</option>
+    <option>Fractions, decimals and percentages</option>
+  </optgroup>
+  <optgroup label="Angles and trigonometry">
+    <option>Prior knowledge check</option>
+    <option>Angle properties of triangles and quadrilaterals</option>
+    <option>Exterior angles of a polygon</option>
+    <option>Interior angles of a polygon</option>
+    <option>Pythagoras’ theorem 1</option>
+    <option>Pythagoras’ theorem 2</option>
+    <option>Trigonometry 1</option>
+    <option>Trigonometry 2</option>
+  </optgroup>
+  <optgroup label="Graphs">
+    <option>Prior knowledge check</option>
+    <option>Linear graphs</option>
+    <option>More linear graphs</option>
+    <option>Using rates of change</option>
+    <option>Real-life graphs</option>
+    <option>Line segments</option>
+    <option>Quadratic graphs</option>
+    <option>Cubic and reciprocal graphs</option>
+    <option>More graphs</option>
+  </optgroup>
+  <optgroup label="Area and volume">
+    <option>Prior knowledge check</option>
+    <option>Perimeter and area</option>
+    <option>Units and accuracy</option>
+    <option>Prisms</option>
+    <option>Circles</option>
+    <option>Sectors of circles</option>
+    <option>Cylinders and spheres</option>
+    <option>Pyramids and cones</option>
+  </optgroup>
+  <optgroup label="Transformations and constructions">
+    <option>Prior knowledge check</option>
+    <option>3D solids</option>
+    <option>Reflection and rotation</option>
+    <option>Enlargement</option>
+    <option>Transformations and combinations of transformations</option>
+    <option>Bearings and scale drawings</option>
+    <option>Constructions 1</option>
+    <option>Constructions 2</option>
+  </optgroup>
+  <optgroup label="Equations and inequalities">
+    <option>Prior knowledge check</option>
+    <option>Solving quadratic equations 1</option>
+    <option>Solving quadratic equations 2</option>
+    <option>Completing the square</option>
+    <option>Solving simple simultaneous equations</option>
+    <option>More simultaneous equations</option>
+    <option>Solving linear and quadratic simultaneous equations</option>
+    <option>Solving linear inequalities</option>
+  </optgroup>
+  <optgroup label="Probability">
+    <option>Prior knowledge check</option>
+    <option>Combined events</option>
+    <option>Mutually exclusive events</option>
+    <option>Independent events and tree diagrams</option>
+    <option>Conditional probability</option>
+  </optgroup>
+  <optgroup label="Circle theorems">
+    <option>Prior knowledge check</option>
+    <option>Radii and chords</option>
+    <option>Tangents</option>
+    <option>Angles in circles 1</option>
+    <option>Angles in circles 2</option>
+    <option>Applying circle theorems</option>
+  </optgroup>
+  <optgroup label="Vectors and geometric proof">
+    <option>Prior knowledge check</option>
+    <option>Vectors and vector notation</option>
+    <option>Vector arithmetic</option>
+    <option>Parallel vectors and collinear points</option>
+    <option>Solving geometric problems</option>
+  </optgroup>
+</optgroup>
+           <optgroup label="YEAR ONE">
+  <optgroup label="1. Algebraic Expressions">
+    <option value="index_laws">Index laws</option>
+    <option value="expanding_brackets">Expanding brackets</option>
+    <option value="factorising">Factorising</option>
+    <option value="negative_indices">Negative and fractional indices</option>
+    <option value="surds">Surds</option>
+    <option value="rationalising_denominators">Rationalising denominators</option>
+  </optgroup>
+  <optgroup label="2. Quadratics">
+    <option value="solving_quadratics">Solving quadratic equations</option>
+    <option value="completing_square">Completing the square</option>
+    <option value="functions">Functions</option>
+    <option value="quadratic_graphs">Quadratic graphs</option>
+    <option value="discriminant">The discriminant</option>
+    <option value="modelling_quadratics">Modelling with quadratics</option>
+  </optgroup>
+  <optgroup label="3. Equations and Inequalities">
+    <option value="linear_simultaneous">Linear simultaneous equations</option>
+    <option value="quadratic_simultaneous">Quadratic simultaneous equations</option>
+    <option value="simultaneous_graphs">Simultaneous equations on graphs</option>
+    <option value="linear_inequalities">Linear inequalities</option>
+    <option value="quadratic_inequalities">Quadratic inequalities</option>
+    <option value="inequalities_graphs">Inequalities on graphs</option>
+    <option value="regions">Regions</option>
+  </optgroup>
+  <optgroup label="4. Graphs and Transformations">
+    <option value="cubic_graphs">Cubic graphs</option>
+    <option value="quartic_graphs">Quartic graphs</option>
+    <option value="reciprocal_graphs">Reciprocal graphs</option>
+    <option value="points_intersection">Points of intersection</option>
+    <option value="translating_graphs">Translating graphs</option>
+    <option value="stretching_graphs">Stretching graphs</option>
+    <option value="transforming_functions">Transforming functions</option>
+  </optgroup>
+  <optgroup label="5. Straight Line Graphs">
+    <option value="straight_line_y_mx_c">y = mx + c</option>
+    <option value="equations_straight_lines">Equations of straight lines</option>
+    <option value="parallel_perpendicular_lines">Parallel and perpendicular lines</option>
+    <option value="length_area">Length and area</option>
+    <option value="modelling_straight_lines">Modelling with straight lines</option>
+  </optgroup>
+  <optgroup label="6. Circles">
+    <option value="midpoints_bisectors">Midpoints and perpendicular bisectors</option>
+    <option value="equation_circle">Equation of a circle</option>
+    <option value="intersections_circle">Intersections of straight lines and circles</option>
+    <option value="tangent_chord_properties">Use tangent and chord properties</option>
+    <option value="circles_triangles">Circles and triangles</option>
+  </optgroup>
+  <optgroup label="7. Algebraic Methods">
+    <option value="algebraic_fractions">Algebraic fractions</option>
+    <option value="dividing_polynomials">Dividing polynomials</option>
+    <option value="factor_theorem">The factor theorem</option>
+    <option value="mathematical_proof">Mathematical proof</option>
+    <option value="methods_proof">Methods of proof</option>
+  </optgroup>
+  <optgroup label="8. The Binomial Expansion">
+    <option value="pascals_triangle">Pascal’s triangle</option>
+    <option value="factorial_notation">Factorial notation</option>
+    <option value="binomial_expansion">The binomial expansion</option>
+    <option value="solving_binomial_problems">Solving binomial problems</option>
+    <option value="binomial_estimation">Binomial estimation</option>
+  </optgroup>
+  <optgroup label="9. Trigonometric Ratios">
+    <option value="cosine_rule">The cosine rule</option>
+    <option value="sine_rule">The sine rule</option>
+    <option value="areas_triangles">Areas of triangles</option>
+    <option value="solving_triangle_problems">Solving triangle problems</option>
+    <option value="graphs_sine_cosine_tangent">Graphs of sine, cosine, and tangent</option>
+    <option value="transforming_trigonometric">Transforming trigonometric graphs</option>
+  </optgroup>
+  <optgroup label="10. Trigonometric Identities and Equations">
+    <option value="angles_four_quadrants">Angles in all four quadrants</option>
+    <option value="exact_trigonometric_ratios">Exact values of trigonometric ratios</option>
+    <option value="trigonometric_identities">Trigonometric identities</option>
+    <option value="simple_trig_equations">Simple trigonometric equations</option>
+    <option value="harder_trig_equations">Harder trigonometric equations</option>
+    <option value="equations_identities">Equations and identities</option>
+  </optgroup>
+  <optgroup label="11. Vectors">
+    <option value="vectors">Vectors</option>
+    <option value="representing_vectors">Representing vectors</option>
+    <option value="magnitude_direction">Magnitude and direction</option>
+    <option value="position_vectors">Position vectors</option>
+    <option value="solving_geometric_problems">Solving geometric problems</option>
+    <option value="modelling_vectors">Modelling with vectors</option>
+  </optgroup>
+  <optgroup label="12. Differentiation">
+    <option value="gradients_curves">Gradients of curves</option>
+    <option value="finding_derivative">Finding the derivative</option>
+    <option value="differentiating_x_n">Differentiating xⁿ</option>
+    <option value="differentiating_quadratics">Differentiating quadratics</option>
+    <option value="differentiating_functions">Differentiating functions with two or more terms</option>
+    <option value="gradients_tangents_normals">Gradients, tangents and normals</option>
+    <option value="increasing_decreasing">Increasing and decreasing functions</option>
+    <option value="second_derivatives">Second order derivatives</option>
+    <option value="stationary_points">Stationary points</option>
+    <option value="sketching_gradient_functions">Sketching gradient functions</option>
+    <option value="modelling_differentiation">Modelling with differentiation</option>
+  </optgroup>
+  <optgroup label="13. Integration">
+    <option value="integrating_x_n">Integrating xⁿ</option>
+    <option value="indefinite_integrals">Indefinite integrals</option>
+    <option value="finding_functions">Finding functions</option>
+    <option value="definite_integrals">Definite integrals</option>
+    <option value="areas_under_curves">Areas under curves</option>
+    <option value="areas_between_curves">Areas between curves and lines</option>
+  </optgroup>
+  <optgroup label="14. Exponentials and Logarithms">
+    <option value="exponential_functions">Exponential functions</option>
+    <option value="y_e_x">y = eˣ</option>
+    <option value="exponential_modelling">Exponential modelling</option>
+    <option value="logarithms">Logarithms</option>
+    <option value="laws_logarithms">Laws of logarithms</option>
+    <option value="solving_logarithms">Solving equations using logarithms</option>
+    <option value="natural_logarithms">Working with natural logarithms</option>
+    <option value="logarithms_non_linear">Logarithms and non-linear data</option>
+  </optgroup>
+           </optgroup>
+           <optgroup label="YEAR TWO">
+              <!-- Algebraic Methods -->
+        <optgroup label="Algebraic Methods">
+            <option value="proof-by-contradiction">Proof by contradiction</option>
+            <option value="algebraic-fractions">Algebraic fractions</option>
+            <option value="partial-fractions">Partial fractions</option>
+            <option value="repeated-factors">Repeated factors</option>
+            <option value="algebraic-division">Algebraic division</option>
+        </optgroup>
+        
+        <!-- Functions and Graphs -->
+        <optgroup label="Functions and Graphs">
+            <option value="modulus-function">The modulus function</option>
+            <option value="functions-and-mappings">Functions and mappings</option>
+            <option value="composite-functions">Composite functions</option>
+            <option value="inverse-functions">Inverse functions</option>
+            <option value="combining-transformations">Combining transformations</option>
+            <option value="solving-modulus-problems">Solving modulus problems</option>
+        </optgroup>
+        
+        <!-- Sequences and Series -->
+        <optgroup label="Sequences and Series">
+            <option value="arithmetic-sequences">Arithmetic sequences</option>
+            <option value="arithmetic-series">Arithmetic series</option>
+            <option value="geometric-sequences">Geometric sequences</option>
+            <option value="geometric-series">Geometric series</option>
+            <option value="sum-to-infinity">Sum to infinity</option>
+            <option value="sigma-notation">Sigma notation</option>
+            <option value="recurrence-relations">Recurrence relations</option>
+            <option value="modelling-with-series">Modelling with series</option>
+        </optgroup>
+        
+        <!-- Binomial Expansion -->
+        <optgroup label="Binomial Expansion">
+            <option value="expanding-1-plus-x">Expanding (1 + x)<sup>n</sup></option>
+            <option value="expanding-a-plus-bx">Expanding (a + bx)<sup>n</sup></option>
+            <option value="using-partial-fractions">Using partial fractions</option>
+        </optgroup>
+        
+        <!-- Radians -->
+        <optgroup label="Radians">
+            <option value="radian-measure">Radian measure</option>
+            <option value="arc-length">Arc length</option>
+            <option value="areas-of-sectors-and-segments">Areas of sectors and segments</option>
+            <option value="solving-trigonometric-equations">Solving trigonometric equations</option>
+            <option value="small-angle-approximations">Small angle approximations</option>
+        </optgroup>
+        
+        <!-- Trigonometric Functions -->
+        <optgroup label="Trigonometric Functions">
+            <option value="secant-cosecant-cotangent">Secant, cosecant and cotangent</option>
+            <option value="graphs-of-sec-cosec-cot">Graphs of sec x, cosec x and cot x</option>
+            <option value="using-sec-cosec-cot">Using sec x, cosec x and cot x</option>
+            <option value="trigonometric-identities">Trigonometric identities</option>
+            <option value="inverse-trigonometric-functions">Inverse trigonometric functions</option>
+        </optgroup>
+        
+        <!-- Trigonometry and Modelling -->
+        <optgroup label="Trigonometry and Modelling">
+            <option value="addition-formulae">Addition formulae</option>
+            <option value="using-angle-addition-formulae">Using the angle addition formulae</option>
+            <option value="double-angle-formulae">Double-angle formulae</option>
+            <option value="solving-trigonometric-equations">Solving trigonometric equations</option>
+            <option value="simplifying-acos-bsin">Simplifying acos x + bsin x</option>
+            <option value="proving-trigonometric-identities">Proving trigonometric identities</option>
+            <option value="modelling-with-trigonometric-functions">Modelling with trigonometric functions</option>
+        </optgroup>
+        
+        <!-- Parametric Equations -->
+        <optgroup label="Parametric Equations">
+            <option value="parametric-equations">Parametric equations</option>
+            <option value="using-trigonometric-identities">Using trigonometric identities</option>
+            <option value="curve-sketching">Curve sketching</option>
+            <option value="points-of-intersection">Points of intersection</option>
+            <option value="modelling-with-parametric-equations">Modelling with parametric equations</option>
+        </optgroup>
+        
+        <!-- Differentiation -->
+        <optgroup label="Differentiation">
+            <option value="differentiating-sin-cos">Differentiating sin x and cos x</option>
+            <option value="differentiating-exponentials-logarithms">Differentiating exponentials and logarithms</option>
+            <option value="chain-rule">The chain rule</option>
+            <option value="product-rule">The product rule</option>
+            <option value="quotient-rule">The quotient rule</option>
+            <option value="differentiating-trigonometric-functions">Differentiating trigonometric functions</option>
+            <option value="parametric-differentiation">Parametric differentiation</option>
+            <option value="implicit-differentiation">Implicit differentiation</option>
+            <option value="rates-of-change">Rates of change</option>
+        </optgroup>
+        
+        <!-- Numerical Methods -->
+        <optgroup label="Numerical Methods">
+            <option value="locating-roots">Locating roots</option>
+            <option value="iteration">Iteration</option>
+            <option value="newton-raphson-method">The Newton-Raphson method</option>
+            <option value="applications-to-modelling">Applications to modelling</option>
+        </optgroup>
+        
+        <!-- Integration -->
+        <optgroup label="Integration">
+            <option value="integrating-standard-functions">Integrating standard functions</option>
+            <option value="integrating-f-ax-b">Integrating f(ax + b)</option>
+            <option value="using-trigonometric-identities">Using trigonometric identities</option>
+            <option value="reverse-chain-rule">Reverse chain rule</option>
+            <option value="integration-by-substitution">Integration by substitution</option>
+            <option value="integration-by-parts">Integration by parts</option>
+            <option value="finding-areas">Finding areas</option>
+            <option value="trapezium-rule">The trapezium rule</option>
+            <option value="solving-differential-equations">Solving differential equations</option>
+            <option value="modelling-with-differential-equations">Modelling with differential equations</option>
+        </optgroup>
+        
+        <!-- Vectors -->
+        <optgroup label="Vectors">
+            <option value="3d-coordinates">3D coordinates</option>
+            <option value="vectors-in-3d">Vectors in 3D</option>
+            <option value="solving-geometric-problems">Solving geometric problems</option>
+            <option value="application-to-mechanics">Application to mechanics</option>
+        </optgroup>
+           </optgroup>
+</select>
+
          <h4>Category:</h4>
          <select id="videoType">
            <option value="Video Upload">Video Upload</option>
@@ -193,7 +534,7 @@ close
          </div>
        </div>
        <div class="liveLesson">
-         <video id="livefeed" autoplay="" muted="">
+         <video id="livefeed" autoplay="" muted="" controls="">
            
          </video>
          <h3 id="livefeedTitle"></h3>
@@ -202,19 +543,10 @@ close
            <input type="range" id="zoomSlider" min="1" max="3" step="0.1" value="1">
          <button class="livebtns" id="startlive">Start Lesson</button>
          <button class="livebtns" id="endlive">End Lesson</button>
-         <div id="commentsholder">
-           <div id="comments">
              <video id="receiverVid" autoplay="" >
                
              </video>
-           </div>
-           <div class="com-sender">
-           <input type="text" id="comment" placeholder="Comment..."/>
-             <button><span class="material-symbols-outlined">
-send
-</span></button>
-           </div>
-         </div>
+       
        </div>
        <div class="lesson-holder">
           
@@ -243,6 +575,16 @@ account_circle
      </div>
     <div class="body">
       <h3 class="student-welcome"> Welcome, </h3>
+      <p>Watch time: <span id="watchTime">0</span> seconds</p>
+      <div class="live-indicator">
+        <img src="live.jpeg"/>
+        <div>
+          <h4 id="livevideoname">Live lesson name</h4>
+          <div id="livetutorname">Tutor Name</div>
+        </div>
+        <button id="joinLesson">Join</button>
+      </div>
+
       <div id="student-lessons">
         
       </div>
@@ -301,22 +643,34 @@ var signInTab = document.querySelector('.sign-up');
   var studentEmailHolder = document.querySelector(".student-email-holder");
   var studentRole = document.querySelector(".student-role");
   var studentWelcome = document.querySelector(".student-welcome");
+  const watchTimeHolder = document.querySelector("#watchTime");
+
   
   var tutorNameHolder = document.querySelector(".tutor-name-holder");
   var tutorEmailHolder = document.querySelector(".tutor-email-holder");
   var tutorRole = document.querySelector(".tutor-role");
   var tutorWelcome = document.querySelector(".tutor-welcome");
+  var watchTime;
   
   var signOutBtns = document.querySelectorAll(".sign-out");
   signOutBtns.forEach(btn => {
     btn.addEventListener("click", () => {
-      studentNameHolder.textContent = "";
+      var username = studentNameHolder.textContent;
+      var todaywatch = watchTimeHolder.textContent;
+      var userRef = ref(db, "users/" + username);
+      update(userRef, {
+        watchtime: todaywatch
+      })
+      .then(() => {
+        studentNameHolder.textContent = "";
       studentEmailHolder.textContent = "";
       
       tutorNameHolder.textContent = "";
       tutorEmailHolder.textContent = "";
       
       window.location.href = "index.html";
+      });
+      
     });
   });
   
@@ -341,7 +695,8 @@ var signInTab = document.querySelector('.sign-up');
           email: email,
           password: password,
           uid: user.uid,
-          category: signPath
+          category: signPath,
+          watchtime: "0"
         })
         .then(() => {
           get(userRef).then((snapshot) => {
@@ -357,6 +712,7 @@ var signInTab = document.querySelector('.sign-up');
               studentWelcome.textContent += data.username;
               studentEmailHolder.textContent = data.email;
               studentRole.textContent = data.category;
+              watchTimeHolder.textContent = data.watchtime;
             }
           });
         });
@@ -392,6 +748,9 @@ var signInTab = document.querySelector('.sign-up');
                 studentWelcome.textContent += data[key].username;
                 studentEmailHolder.textContent = data[key].email;
                 studentRole.textContent = data[key].category;
+                watchTimeHolder.textContent = data[key].watchtime;
+                watchTime = data[key].watchtime;
+                watchTimeGet(watchTime);
               } else {
                 signTab.style.display = "none";
                 signInTab.style.visibility = "hidden";
@@ -560,6 +919,7 @@ oldLessonUploadBtn.addEventListener("click", () => {
     
   });
 });
+  
   var lessonHolder = document.querySelector(".lesson-holder");
    var tutorVidQuery = query(ref(db, `videoinfo/`), orderByChild('timestamp'));
   onValue(tutorVidQuery, (snapshot) => {
@@ -588,6 +948,7 @@ oldLessonUploadBtn.addEventListener("click", () => {
         });
       }
     });
+    watchTimeGet(watchTime);
   });
   function tutorLessonDownload () {
     var tutorLessonRef = ref(db, "videoinfo/");
@@ -759,4 +1120,4 @@ var studentLessonHolder = document.querySelector("#student-lessons");
   
 </script>
 </body>
-           </html>
+  </html>
