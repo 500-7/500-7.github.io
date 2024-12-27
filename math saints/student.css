@@ -20,7 +20,6 @@
   width: 100%;
   height: 80px;
   background: rgb(37, 211, 102);
-  position: relative;
   display: flex;
   gap: 10px;
   align-items: center;
@@ -42,4 +41,8 @@
   border-radius: 5pc;
   border: 3px solid white;
   
+}
+.watch {
+  padding: 10px;
+  font-size: 1.5rem;
 }
