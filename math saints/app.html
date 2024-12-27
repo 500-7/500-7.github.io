@@ -9,6 +9,9 @@
   <link rel="stylesheet" href="tutor.css"/>
   <link rel="stylesheet" href="student.css"/>
   
+  <script src="https://www.paypal.com/sdk/js?client-id=AX6AAIJ8cILDB-nBXiEMdMV5XA6SBbzV17B7VuUBs4MYUUzc37wWL-QzdM_BSdjGuQwFriw01heYk-AU&currency=GBP"></script>
+
+  
   <link rel="icon" type="image/x-icon" href="logo.png"/>
   <title>Math Saints</title>
   
@@ -68,10 +71,14 @@
           <input type="text" id="tutor-code"/>
         </div>
         <a href="#tab1" class="linknext" id="back">Previous</a>
-        <button class="linknext" id="fro"> <a href="#tab3" class="linknext">Next</a></button>
+        <button class="linknext" id="fro">Next</button>
       </div>
-      <div id="tab3" class="tabs">
+      
+        Already have an account <a href="#log" class="logintab linknext">Login</a>
+      </div>
+    <div id="tab3" class="tabs">
         <h3 class="ubuntu-bold-italic">Subscription Packages</h3>
+      <div class="sub-holder">
         <div class="free">
           <h1>0.00 POUNDS</h1>
           <ul>
@@ -79,7 +86,7 @@
             <li>Get Notified of new videos</li>
             <li>View lessons</li>
           </ul>
-          <button class="subsribe">Get</button>
+          <button class="subsribe" id="subzero">Get</button>
         </div>
         <div class="pro1">
           <h1>12.00 POUNDS</h1>
@@ -89,7 +96,7 @@
             <li>View lessons</li>
             <li>Attend Old lessons</li>
           </ul>    
-          <button class="subsribe">Subscribe</button>          
+          <button class="subsribe" id="subone">Subscribe</button>          
         </div>
         <div class="pro2">
           <h1>15.00 POUNDS <span>/60 mins</span></h1>
@@ -102,7 +109,7 @@
              <li>Schedule lessons with tutors</li>
              <li>Indulge in live class discussions</li>
           </ul>
-          <button class="subsribe">Subscribe</button>
+          <button class="subsribe" id="subtwo">Subscribe</button>
         </div>
         <div class="pro3">
           <h1>20.00 POUNDS <span>/90 mins</span></h1>
@@ -115,7 +122,7 @@
              <li>Schedule lessons with tutors</li>
              <li>Indulge in live class discussions</li>
           </ul>
-          <button class="subsribe">Subscribe</button>
+          <button class="subsribe" id="subthree">Subscribe</button>
         </div>
         <div class="pro4">
           <h1>25.00 POUNDS <span>/120 mins</span></h1>
@@ -128,10 +135,13 @@
              <li>Schedule lessons with tutors</li>
              <li>Indulge in live class discussions</li>
           </ul>
-          <button class="subsribe">Subscribe</button>
+          <button class="subsribe" id="subfour">Subscribe</button>
         </div>
-        Already have an account <a href="#log" class="logintab linknext">Login</a>
       </div>
+      <div class="pay-wall" id="payone"></div>
+      <div class="pay-wall" id="paytwo"></div>
+      <div class="pay-wall" id="paythree"></div>
+      <div class="pay-wall" id="payfour"></div>
     </div>
   </div>
   </div>
@@ -575,7 +585,8 @@ account_circle
      </div>
     <div class="body">
       <h3 class="student-welcome"> Welcome, </h3>
-      <p>Watch time: <span id="watchTime">0</span> seconds</p>
+      <h4 class="watch">Watch time: <span id="watchTime">0</span> seconds</h4>
+      <p>Subscribed time: <span id="subTime">0</span> seconds</p>
       <div class="live-indicator">
         <img src="live.jpeg"/>
         <div>
@@ -675,10 +686,13 @@ var signInTab = document.querySelector('.sign-up');
   });
   
   
-  var signupBtns = document.querySelectorAll(".subsribe");
-  signupBtns.forEach(buton => {
-    buton.addEventListener("click", () => {
-      
+  var signupbtn = document.querySelector("#fro");
+  var subscribeTab = document.querySelector('#tab3');
+  var othertab1 = document.querySelector('#tab1');
+  var othertab2 = document.querySelector('#tab2');
+
+  signupbtn.addEventListener("click", () => {
+       
       var email = emailInput.value;
       var password = passwordInput.value;
       var username = usernameInput.value;
@@ -696,29 +710,23 @@ var signInTab = document.querySelector('.sign-up');
           password: password,
           uid: user.uid,
           category: signPath,
-          watchtime: "0"
+          watchtime: "0",
+          subscribedtime: "0"
         })
         .then(() => {
-          get(userRef).then((snapshot) => {
-            var data = snapshot.val();
-            signTab.style.display = "none";
-            signInTab.style.visibility = "hidden";
+         
+          
+            othertab1.style.display = 'none';
+            othertab2.style.display = 'none';
+            subscribeTab.style.visibility = "visible";
+            subscribeTab.style.zIndex = "1000";
             loginTab.style.visibility = "hidden";
             
-            if (signPath === "Student") {
-              studentTab.style.display = "block";
-              tutorTab.style.display = "none";
-              studentNameHolder.textContent = data.username;
-              studentWelcome.textContent += data.username;
-              studentEmailHolder.textContent = data.email;
-              studentRole.textContent = data.category;
-              watchTimeHolder.textContent = data.watchtime;
-            }
-          });
+            
+          
         });
       });
       }
-    });
   });
   
   var loginUsernameInput = document.querySelector("#login-username");
@@ -1116,8 +1124,223 @@ var studentLessonHolder = document.querySelector("#student-lessons");
       
     });
   });
-  
-  
+   //payment
+  var subZerobtn = document.querySelector('#subzero');
+  var subOnebtn = document.querySelector('#subone');
+  var subTwobtn = document.querySelector('#subtwo');
+  var subThreebtn = document.querySelector('#subthree');
+  var subFourbtn = document.querySelector('#subfour');
+
+ var subTabOne = document.querySelector('#payone');
+ var subTabTwo = document.querySelector('#paytwo');
+ var subTabThree = document.querySelector('#paythree');
+ var subTabFour = document.querySelector('#payfour');
+
+ var subscribeTime = document.querySelector('#subTime');
+
+subZerobtn.addEventListener('click', () => {
+  var username = usernameInput.value;
+  var userRef = ref(db, "users/" + username);
+  get(userRef)
+  .then((snapshot) => {
+    var data = snapshot.val();
+    if (signPath === "Student") {
+              studentTab.style.display = "block";
+              tutorTab.style.display = "none";
+              studentNameHolder.textContent = data.username;
+              studentWelcome.textContent += data.username;
+              studentEmailHolder.textContent = data.email;
+              studentRole.textContent = data.category;
+              watchTimeHolder.textContent = data.watchtime;
+              subscribeTime.textContent = data.subscribedtime;
+       
+         
+            }
+  });
+});
+
+subOnebtn.addEventListener('click', () => {
+  subTabOne.style.visibility = "visible";
+  subTabOne.style.zIndex = "1000";
+});
+
+subTwobtn.addEventListener('click', () => {
+  subTabTwo.style.visibility = "visible";
+  subTabTwo.style.zIndex = "1000";
+});
+
+subThreebtn.addEventListener('click', () => {
+  subTabThree.style.visibility = "visible";
+  subTabThree.style.zIndex = "1000";
+});
+subFourbtn.addEventListener('click', () => {
+  subTabFour.style.visibility = "visible";
+  subTabFour.style.zIndex = "1000";
+});
+paypal.Buttons({
+    createOrder: function(data, actions) {
+      return actions.order.create({
+        purchase_units: [{
+          amount: {
+            currency_code: 'GBP',
+            value: '12.00' // Replace with the amount to be charged
+          }
+        }]
+      });
+    },
+    onApprove: function(data, actions) {
+      return actions.order.capture().then(function(details) {
+        alert('Transaction completed by ' + details.payer.name.given_name);
+        // OPTIONAL: Call your server to save the transaction
+        var username = usernameInput.value;
+  var userRef = ref(db, "users/" + username);
+  get(userRef)
+  .then((snapshot) => {
+    var data = snapshot.val();
+    if (signPath === "Student") {
+              
+         update(userRef, {
+           subscribedtime: '1200'
+         }).then(() => {
+           studentTab.style.display = "block";
+              tutorTab.style.display = "none";
+              studentNameHolder.textContent = data.username;
+              studentWelcome.textContent += data.username;
+              studentEmailHolder.textContent = data.email;
+              studentRole.textContent = data.category;
+              watchTimeHolder.textContent = data.watchtime;
+              subscribeTime.textContent = data.subscribedtime;
+       
+         });
+            }
+  });
+        
+      });
+    }
+  }).render('#payone');
+
+paypal.Buttons({
+    createOrder: function(data, actions) {
+      return actions.order.create({
+        purchase_units: [{
+          amount: {
+            currency_code: 'GBP',
+            value: '15.00' // Replace with the amount to be charged
+          }
+        }]
+      });
+    },
+    onApprove: function(data, actions) {
+      return actions.order.capture().then(function(details) {
+        alert('Transaction completed by ' + details.payer.name.given_name);
+        // OPTIONAL: Call your server to save the transaction
+         var username = usernameInput.value;
+  var userRef = ref(db, "users/" + username);
+  get(userRef)
+  .then((snapshot) => {
+    var data = snapshot.val();
+    if (signPath === "Student") {
+              
+         update(userRef, {
+           subscribedtime: '5400'
+         }).then(() => {
+           studentTab.style.display = "block";
+              tutorTab.style.display = "none";
+              studentNameHolder.textContent = data.username;
+              studentWelcome.textContent += data.username;
+              studentEmailHolder.textContent = data.email;
+              studentRole.textContent = data.category;
+              watchTimeHolder.textContent = data.watchtime;
+              subscribeTime.textContent = data.subscribedtime;
+       
+         });
+            }
+  });
+      });
+    }
+  }).render('#paytwo');
+
+paypal.Buttons({
+    createOrder: function(data, actions) {
+      return actions.order.create({
+        purchase_units: [{
+          amount: {
+            currency_code: 'GBP',
+            value: '20.00' // Replace with the amount to be charged
+          }
+        }]
+      });
+    },
+    onApprove: function(data, actions) {
+      return actions.order.capture().then(function(details) {
+        alert('Transaction completed by ' + details.payer.name.given_name);
+        // OPTIONAL: Call your server to save the transaction
+         var username = usernameInput.value;
+  var userRef = ref(db, "users/" + username);
+  get(userRef)
+  .then((snapshot) => {
+    var data = snapshot.val();
+    if (signPath === "Student") {
+              
+         update(userRef, {
+           subscribedtime: '7200'
+         }).then(() => {
+           studentTab.style.display = "block";
+              tutorTab.style.display = "none";
+              studentNameHolder.textContent = data.username;
+              studentWelcome.textContent += data.username;
+              studentEmailHolder.textContent = data.email;
+              studentRole.textContent = data.category;
+              watchTimeHolder.textContent = data.watchtime;
+              subscribeTime.textContent = data.subscribedtime;
+       
+         });
+            }
+  });
+      });
+    }
+  }).render('#paythree');
+
+paypal.Buttons({
+    createOrder: function(data, actions) {
+      return actions.order.create({
+        purchase_units: [{
+          amount: {
+            currency_code: 'GBP',
+            value: '25.00' // Replace with the amount to be charged
+          }
+        }]
+      });
+    },
+    onApprove: function(data, actions) {
+      return actions.order.capture().then(function(details) {
+        alert('Transaction completed by ' + details.payer.name.given_name);
+        // OPTIONAL: Call your server to save the transaction
+         var username = usernameInput.value;
+  var userRef = ref(db, "users/" + username);
+  get(userRef)
+  .then((snapshot) => {
+    var data = snapshot.val();
+    if (signPath === "Student") {
+              
+         update(userRef, {
+           subscribedtime: '10800'
+         }).then(() => {
+           studentTab.style.display = "block";
+              tutorTab.style.display = "none";
+              studentNameHolder.textContent = data.username;
+              studentWelcome.textContent += data.username;
+              studentEmailHolder.textContent = data.email;
+              studentRole.textContent = data.category;
+              watchTimeHolder.textContent = data.watchtime;
+              subscribeTime.textContent = data.subscribedtime;
+       
+         });
+            }
+  });
+      });
+    }
+  }).render('#payfour');
 </script>
 </body>
-  </html>
+        </html>
