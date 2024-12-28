@@ -51,7 +51,7 @@
   border-radius: 5px;
   border: 1px solid gray;
 }
-.login button {
+#login-button {
   width: 200px;
   height: 35px;
   padding: 15px;
@@ -64,6 +64,18 @@
 }
 .login button:hover {
   box-shadow: 0 0 10px #70ff00;
+}
+.passholder {
+  display: flex;
+  gap: 10px;
+}
+#seelogpass, #seesignpass {
+  border: none;
+  border-radius: 50%;
+  display: grid;
+  place-content: center;
+  background: transparent;
+  color: white;
 }
 .sign-up {
   visibility: hidden;
