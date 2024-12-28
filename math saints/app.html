@@ -39,7 +39,10 @@
   <div class="mega-cont">
   <div class="cont">
     <div id="log" class="login">
-      <h3>Welcome back</h3>
+      <div>
+         I don't have an account <a href="#sign" class="linknext" id="createaccount">Create Account</a>
+      </div>
+      <h2>Welcome back</h2>
       <h5>User name:</h5>
       <input type="text" class="ubuntu-regular" id="login-username" placeholder="Your name"/>
       <h5>Password:</h5>
@@ -50,11 +53,12 @@ visibility
 </span></button>
       </div>
       <button id="login-button">LOGIN</button>
-      I don't have an account <a href="#sign" class="linknext" id="createaccount">Create Account</a>
+     
     </div>
     
     <div id="sign" class="sign-up">
       <div id="tab1" class="tabs">
+        <h2>Create an account</h2>
         <h5>Email:</h5>
         <input type="email" class="ubuntu-regular" id="sign-up-email" placeholder="something@example.com"/>
         <h5>Password:</h5>
@@ -82,9 +86,11 @@ visibility
         </div>
         <a href="#tab1" class="linknext" id="back">Previous</a>
         <button class="linknext" id="fro">Next</button>
+        <div>
+           Already have an account <a href="#log" class="logintab linknext">Login</a>
+        </div>
       </div>
-      
-        Already have an account <a href="#log" class="logintab linknext">Login</a>
+    
       </div>
     <div id="tab3" class="tabs">
         <h3 class="ubuntu-bold-italic">Subscription Packages</h3>
@@ -1353,4 +1359,4 @@ paypal.Buttons({
   }).render('#payfour');
 </script>
 </body>
-                             </html>
+          </html>
