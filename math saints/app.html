@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="tutor.css"/>
   <link rel="stylesheet" href="student.css"/>
   
-  <script src="https://www.paypal.com/sdk/js?client-id=AX6AAIJ8cILDB-nBXiEMdMV5XA6SBbzV17B7VuUBs4MYUUzc37wWL-QzdM_BSdjGuQwFriw01heYk-AU&currency=GBP"></script>
+  <script src="https://www.paypal.com/sdk/js?client-id=AYzSSzM60OLbTu3tks7nqj5c5zf5agUZYKFOpWwGbqbIihFPkqSgYRuDnCmDluGEu_cQxKaOfLa0Yznd&currency=GBP"></script>
 
   
   <link rel="icon" type="image/x-icon" href="logo.png"/>
@@ -41,9 +41,14 @@
     <div id="log" class="login">
       <h3>Welcome back</h3>
       <h5>User name:</h5>
-      <input type="text" id="login-username" placeholder="Your name"/>
+      <input type="text" class="ubuntu-regular" id="login-username" placeholder="Your name"/>
       <h5>Password:</h5>
-      <input type="password" id="login-password"/>
+      <div class="passholder">
+      <input type="password" class="ubuntu-regular" id="login-password"/>
+      <button id="seelogpass"><span class="material-symbols-outlined">
+visibility
+</span></button>
+      </div>
       <button id="login-button">LOGIN</button>
       I don't have an account <a href="#sign" class="linknext" id="createaccount">Create Account</a>
     </div>
@@ -51,18 +56,23 @@
     <div id="sign" class="sign-up">
       <div id="tab1" class="tabs">
         <h5>Email:</h5>
-        <input type="email" id="sign-up-email" placeholder="something@example.com"/>
+        <input type="email" class="ubuntu-regular" id="sign-up-email" placeholder="something@example.com"/>
         <h5>Password:</h5>
-        <input type="password" id="sign-up-password"/>
+        <div class="passholder">
+        <input type="password" class="ubuntu-regular" id="sign-up-password"/>
+          <button id="seesignpass"><span class="material-symbols-outlined">
+visibility
+</span></button>
+        </div>
         <a href="#tab2" class="linknext">Next</a>
       </div>
       <div id="tab2" class="tabs">
         <h5>Your name:</h5>
-        <input type="text" id="sign-up-name" placeholder="User name"/>
+        <input class="ubuntu-regular" type="text" id="sign-up-name" placeholder="User name"/>
         <h4>
           Sign up As:
         </h4>
-        <select id="sign-up-path">
+        <select class="ubuntu-regular" id="sign-up-path">
           <option value="Student">Student</option>
           <option value="Tutor">Tutor</option>
         </select>
@@ -1343,4 +1353,4 @@ paypal.Buttons({
   }).render('#payfour');
 </script>
 </body>
-        </html>
+                             </html>
