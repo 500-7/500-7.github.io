@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="tutor.css"/>
   <link rel="stylesheet" href="student.css"/>
   
-  <script src="https://www.paypal.com/sdk/js?client-id=AYzSSzM60OLbTu3tks7nqj5c5zf5agUZYKFOpWwGbqbIihFPkqSgYRuDnCmDluGEu_cQxKaOfLa0Yznd&currency=GBP"></script>
+  <script src="https://www.paypal.com/sdk/js?client-id=AZFhXvJ1BDVIU9MA5eLanlrrLn6k-vhe2unRoWPjDBOPv5eFP4L-a0mhyy8tuMJ3URPK6bkjzvH8C3V&currency=GBP"></script>
 
   
   <link rel="icon" type="image/x-icon" href="logo.png"/>
@@ -624,14 +624,13 @@ account_circle
          "Let's have fun solving problems and numbers"
        </div>
   </div>
-  <script src="https://checkout.flutterwave.com/v3.js"></script>
-  <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
+  
   <script src="apple.js"></script>
   <script type="module">
   // Import the functions you need from the SDKs you need
   import { initializeApp } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-app.js";
   import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-analytics.js";
-  import{ getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, updateProfile, onAuthStateChanged, signInWithPopup, GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-auth.js";
+  import{ getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, updateProfile, onAuthStateChanged, signInWithPopup, GoogleAuthProvider, signOut } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-auth.js";
   import { getDatabase, get, set, push, query, onValue, ref, update, remove, orderByChild } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-database.js";
   import { getStorage, uploadBytes, uploadString, ref as sRef, getDownloadURL } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-storage.js";
 
@@ -694,6 +693,7 @@ var signInTab = document.querySelector('.sign-up');
       
       tutorNameHolder.textContent = "";
       tutorEmailHolder.textContent = "";
+        auth.signOut();
       
       window.location.href = "index.html";
       });
@@ -707,6 +707,56 @@ var signInTab = document.querySelector('.sign-up');
   var othertab1 = document.querySelector('#tab1');
   var othertab2 = document.querySelector('#tab2');
 
+  document.addEventListener("DOMContentLoaded", () => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        var uid = user.uid;
+        var email = user.email;
+        var userRef = ref(db, "users/");
+      get(userRef)
+        .then((snapshot) => {
+          var data = snapshot.val();
+          Object.keys(data).forEach((key) => {
+            if (data[key].email === email) {
+              if (data[key].uid === uid) {
+                  if (data[key].category === "Student") {
+                signTab.style.display = "none";
+                signInTab.style.visibility = "hidden";
+                loginTab.style.visibility = "hidden";
+
+                studentTab.style.display = "block";
+                tutorTab.style.display = "none";
+                studentNameHolder.textContent = data[key].username;
+                studentWelcome.textContent += data[key].username;
+                studentEmailHolder.textContent = data[key].email;
+                studentRole.textContent = data[key].category;
+                watchTimeHolder.textContent = data[key].watchtime;
+                watchTime = data[key].watchtime;
+                watchTimeGet(watchTime);
+              } else {
+                signTab.style.display = "none";
+                signInTab.style.visibility = "hidden";
+                loginTab.style.visibility = "hidden";
+
+                studentTab.style.display = "none";
+                tutorTab.style.display = "block";
+                tutorNameHolder.textContent = data[key].username;
+                tutorWelcome.textContent += data[key].username;
+                tutorEmailHolder.textContent = data[key].email;
+                tutorRole.textContent = data[key].category;
+                tutorLessonDownload();
+              }
+              }
+            } 
+          });
+        });
+        
+      } else {
+        showAlert('none of ur accounts is signed in, please sign in...');
+      }
+    });
+  });
+  
   signupbtn.addEventListener("click", () => {
        
       var email = emailInput.value;
@@ -1159,6 +1209,7 @@ subZerobtn.addEventListener('click', () => {
   var userRef = ref(db, "users/" + username);
   get(userRef)
   .then((snapshot) => {
+    var signPath = signupPath.value;
     var data = snapshot.val();
     if (signPath === "Student") {
               studentTab.style.display = "block";
@@ -1212,6 +1263,7 @@ paypal.Buttons({
   var userRef = ref(db, "users/" + username);
   get(userRef)
   .then((snapshot) => {
+    var signPath = signupPath.value;
     var data = snapshot.val();
     if (signPath === "Student") {
               
@@ -1254,6 +1306,7 @@ paypal.Buttons({
   var userRef = ref(db, "users/" + username);
   get(userRef)
   .then((snapshot) => {
+   var signPath = signupPath.value; 
     var data = snapshot.val();
     if (signPath === "Student") {
               
@@ -1295,6 +1348,7 @@ paypal.Buttons({
   var userRef = ref(db, "users/" + username);
   get(userRef)
   .then((snapshot) => {
+   var signPath = signupPath.value; 
     var data = snapshot.val();
     if (signPath === "Student") {
               
@@ -1336,6 +1390,7 @@ paypal.Buttons({
   var userRef = ref(db, "users/" + username);
   get(userRef)
   .then((snapshot) => {
+   var signPath = signupPath.value; 
     var data = snapshot.val();
     if (signPath === "Student") {
               
@@ -1359,4 +1414,4 @@ paypal.Buttons({
   }).render('#payfour');
 </script>
 </body>
-          </html>
+        </html>
