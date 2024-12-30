@@ -1205,13 +1205,13 @@ var studentLessonHolder = document.querySelector("#student-lessons");
  var subscribeTime = document.querySelector('#subTime');
 
 subZerobtn.addEventListener('click', () => {
+  var usernameInput = document.getElementById("sign-up-name");
+
   var username = usernameInput.value;
   var userRef = ref(db, "users/" + username);
   get(userRef)
   .then((snapshot) => {
-    var signPath = signupPath.value;
     var data = snapshot.val();
-    if (signPath === "Student") {
               studentTab.style.display = "block";
               tutorTab.style.display = "none";
               studentNameHolder.textContent = data.username;
@@ -1220,99 +1220,76 @@ subZerobtn.addEventListener('click', () => {
               studentRole.textContent = data.category;
               watchTimeHolder.textContent = data.watchtime;
               subscribeTime.textContent = data.subscribedtime;
-       
-         
-            }
+          
   });
 });
 
 subOnebtn.addEventListener('click', () => {
-  subTabOne.style.visibility = "visible";
-  subTabOne.style.zIndex = "1000";
-});
+  var usernameInput = document.getElementById("sign-up-name");
+
+    var username = usernameInput.value;
+  var userRef = ref(db, "users/" + username);
+    update(userRef, {
+           subscribedtime: '1200'
+         }).then(() => {
+  get(userRef)
+  .then((snapshot) => {
+    var data = snapshot.val();
+             
+           studentTab.style.display = "block";
+              tutorTab.style.display = "none";
+              studentNameHolder.textContent = data.username;
+              studentWelcome.textContent += data.username;
+              studentEmailHolder.textContent = data.email;
+              studentRole.textContent = data.category;
+              watchTimeHolder.textContent = data.watchtime;
+              subscribeTime.textContent = data.subscribedtime;
+       window.location.href='https://monzo.me/serahnabunya/12.00?h=_aKU1R&d=Subsription%20for%20Math%20Saints%20Package%20one'
+
+         });
+    });
+  
+  });
 
 subTwobtn.addEventListener('click', () => {
-  subTabTwo.style.visibility = "visible";
-  subTabTwo.style.zIndex = "1000";
+  var usernameInput = document.getElementById("sign-up-name");
+
+    var username = usernameInput.value;
+  var userRef = ref(db, "users/" + username);
+    update(userRef, {
+           subscribedtime: '3600'
+         }).then(() => {
+  get(userRef)
+  .then((snapshot) => {
+    var data = snapshot.val();
+             
+           studentTab.style.display = "block";
+              tutorTab.style.display = "none";
+              studentNameHolder.textContent = data.username;
+              studentWelcome.textContent += data.username;
+              studentEmailHolder.textContent = data.email;
+              studentRole.textContent = data.category;
+              watchTimeHolder.textContent = data.watchtime;
+              subscribeTime.textContent = data.subscribedtime;
+       window.location.href='https://monzo.me/serahnabunya/15.00?h=_aKU1R&d=Subsription%20for%20Math%20Saints%20Package%20one'
+
+         });
+    });
+  
 });
 
 subThreebtn.addEventListener('click', () => {
-  subTabThree.style.visibility = "visible";
-  subTabThree.style.zIndex = "1000";
-});
-subFourbtn.addEventListener('click', () => {
-  subTabFour.style.visibility = "visible";
-  subTabFour.style.zIndex = "1000";
-});
-paypal.Buttons({
-    createOrder: function(data, actions) {
-      return actions.order.create({
-        purchase_units: [{
-          amount: {
-            currency_code: 'GBP',
-            value: '12.00' // Replace with the amount to be charged
-          }
-        }]
-      });
-    },
-    onApprove: function(data, actions) {
-      return actions.order.capture().then(function(details) {
-        alert('Transaction completed by ' + details.payer.name.given_name);
-        // OPTIONAL: Call your server to save the transaction
-        var username = usernameInput.value;
-  var userRef = ref(db, "users/" + username);
-  get(userRef)
-  .then((snapshot) => {
-    var signPath = signupPath.value;
-    var data = snapshot.val();
-    if (signPath === "Student") {
-              
-         update(userRef, {
-           subscribedtime: '1200'
-         }).then(() => {
-           studentTab.style.display = "block";
-              tutorTab.style.display = "none";
-              studentNameHolder.textContent = data.username;
-              studentWelcome.textContent += data.username;
-              studentEmailHolder.textContent = data.email;
-              studentRole.textContent = data.category;
-              watchTimeHolder.textContent = data.watchtime;
-              subscribeTime.textContent = data.subscribedtime;
-       
-         });
-            }
-  });
-        
-      });
-    }
-  }).render('#payone');
+  var usernameInput = document.getElementById("sign-up-name");
 
-paypal.Buttons({
-    createOrder: function(data, actions) {
-      return actions.order.create({
-        purchase_units: [{
-          amount: {
-            currency_code: 'GBP',
-            value: '15.00' // Replace with the amount to be charged
-          }
-        }]
-      });
-    },
-    onApprove: function(data, actions) {
-      return actions.order.capture().then(function(details) {
-        alert('Transaction completed by ' + details.payer.name.given_name);
-        // OPTIONAL: Call your server to save the transaction
-         var username = usernameInput.value;
+    var username = usernameInput.value;
   var userRef = ref(db, "users/" + username);
-  get(userRef)
-  .then((snapshot) => {
-   var signPath = signupPath.value; 
-    var data = snapshot.val();
-    if (signPath === "Student") {
-              
-         update(userRef, {
+    update(userRef, {
            subscribedtime: '5400'
          }).then(() => {
+  get(userRef)
+  .then((snapshot) => {
+    var data = snapshot.val();
+             
            studentTab.style.display = "block";
               tutorTab.style.display = "none";
               studentNameHolder.textContent = data.username;
@@ -1321,82 +1298,24 @@ paypal.Buttons({
               studentRole.textContent = data.category;
               watchTimeHolder.textContent = data.watchtime;
               subscribeTime.textContent = data.subscribedtime;
-       
-         });
-            }
-  });
-      });
-    }
-  }).render('#paytwo');
+       window.location.href='https://monzo.me/serahnabunya/20.00?h=_aKU1R&d=Subsription%20for%20Math%20Saints%20Package%20one'
 
-paypal.Buttons({
-    createOrder: function(data, actions) {
-      return actions.order.create({
-        purchase_units: [{
-          amount: {
-            currency_code: 'GBP',
-            value: '20.00' // Replace with the amount to be charged
-          }
-        }]
-      });
-    },
-    onApprove: function(data, actions) {
-      return actions.order.capture().then(function(details) {
-        alert('Transaction completed by ' + details.payer.name.given_name);
-        // OPTIONAL: Call your server to save the transaction
-         var username = usernameInput.value;
+         });
+    });
+  
+});
+subFourbtn.addEventListener('click', () => {
+  var usernameInput = document.getElementById("sign-up-name");
+
+    var username = usernameInput.value;
   var userRef = ref(db, "users/" + username);
-  get(userRef)
-  .then((snapshot) => {
-   var signPath = signupPath.value; 
-    var data = snapshot.val();
-    if (signPath === "Student") {
-              
-         update(userRef, {
+    update(userRef, {
            subscribedtime: '7200'
          }).then(() => {
-           studentTab.style.display = "block";
-              tutorTab.style.display = "none";
-              studentNameHolder.textContent = data.username;
-              studentWelcome.textContent += data.username;
-              studentEmailHolder.textContent = data.email;
-              studentRole.textContent = data.category;
-              watchTimeHolder.textContent = data.watchtime;
-              subscribeTime.textContent = data.subscribedtime;
-       
-         });
-            }
-  });
-      });
-    }
-  }).render('#paythree');
-
-paypal.Buttons({
-    createOrder: function(data, actions) {
-      return actions.order.create({
-        purchase_units: [{
-          amount: {
-            currency_code: 'GBP',
-            value: '25.00' // Replace with the amount to be charged
-          }
-        }]
-      });
-    },
-    onApprove: function(data, actions) {
-      return actions.order.capture().then(function(details) {
-        alert('Transaction completed by ' + details.payer.name.given_name);
-        // OPTIONAL: Call your server to save the transaction
-         var username = usernameInput.value;
-  var userRef = ref(db, "users/" + username);
   get(userRef)
   .then((snapshot) => {
-   var signPath = signupPath.value; 
     var data = snapshot.val();
-    if (signPath === "Student") {
-              
-         update(userRef, {
-           subscribedtime: '10800'
-         }).then(() => {
+             
            studentTab.style.display = "block";
               tutorTab.style.display = "none";
               studentNameHolder.textContent = data.username;
@@ -1405,13 +1324,60 @@ paypal.Buttons({
               studentRole.textContent = data.category;
               watchTimeHolder.textContent = data.watchtime;
               subscribeTime.textContent = data.subscribedtime;
-       
+       window.location.href='https://monzo.me/serahnabunya/25.00?h=_aKU1R&d=Subsription%20for%20Math%20Saints%20Package%20one'
+
          });
-            }
-  });
-      });
-    }
-  }).render('#payfour');
-</script>
+    });
+  
+});
+
+  //watch time queries
+function watchTimeGet (watchTime) {
+    const allVideos = document.querySelectorAll("video");
+const watchTimeHolder = document.querySelector("#watchTime");
+
+const watchedIntervalsMap = new Map(); 
+    
+allVideos.forEach((video) => {
+    watchedIntervalsMap.set(video, new Set()); 
+
+    video.addEventListener("timeupdate", () => {
+        const currentTime = Math.floor(video.currentTime); 
+        const watchedIntervals = watchedIntervalsMap.get(video); 
+
+        
+        if (!watchedIntervals.has(currentTime)) {
+            watchedIntervals.add(currentTime);
+            watchTime++; 
+            watchTimeHolder.textContent = watchTime; 
+          var standardTime = subscribeTime.textContent;
+          if (watchTime === standardTime) {
+            subscribeTime.textContent = '0';
+            watchTimeHolder.textContent = '0';
+            var username = studentNameHolder.textContent;
+             var userRef = ref(db, "users/" + username);
+    update(userRef, {
+           subscribedtime: '0'
+         }).then(() => {
+           var paytab = document.querySelector('#tab3');
+           paytab.style.visibility = 'visible';
+           paytab.style.zIndex = '1000';
+         });
+            
+          }
+        }
+    });
+});
+    
+console.log("All videos initialized:", allVideos.length);
+allVideos.forEach((video, index) => {
+    console.log(`Video ${index + 1} duration:`, video.duration);
+});
+
+}
+watchTimeGet(watchTime);
+setTimeInterval(watchTimeGet,5000);
+
+  </script>
 </body>
-        </html>
+           </html>
