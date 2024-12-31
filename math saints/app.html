@@ -8,9 +8,7 @@
   <link rel="stylesheet" href="pay.css"/>
   <link rel="stylesheet" href="tutor.css"/>
   <link rel="stylesheet" href="student.css"/>
-  
-  <script src="https://www.paypal.com/sdk/js?client-id=AZFhXvJ1BDVIU9MA5eLanlrrLn6k-vhe2unRoWPjDBOPv5eFP4L-a0mhyy8tuMJ3URPK6bkjzvH8C3V&currency=GBP"></script>
-
+  <link rel="stylesheet" href="paytab.css"/>
   
   <link rel="icon" type="image/x-icon" href="logo.png"/>
   <title>Math Saints</title>
@@ -91,74 +89,8 @@ visibility
         </div>
       </div>
     
-      </div>
-    <div id="tab3" class="tabs">
-        <h3 class="ubuntu-bold-italic">Subscription Packages</h3>
-      <div class="sub-holder">
-        <div class="free">
-          <h1>0.00 POUNDS</h1>
-          <ul>
-            <li>Get Notified of new concepts</li>
-            <li>Get Notified of new videos</li>
-            <li>View lessons</li>
-          </ul>
-          <button class="subsribe" id="subzero">Get</button>
-        </div>
-        <div class="pro1">
-          <h1>12.00 POUNDS</h1>
-          <ul>
-            <li>Get Notified of new concepts</li>
-            <li>Get Notified of new videos</li>
-            <li>View lessons</li>
-            <li>Attend Old lessons</li>
-          </ul>    
-          <button class="subsribe" id="subone">Subscribe</button>          
-        </div>
-        <div class="pro2">
-          <h1>15.00 POUNDS <span>/60 mins</span></h1>
-           <ul>
-            <li>Get Notified of new concepts</li>
-            <li>Get Notified of new videos</li>
-            <li>View lessons</li>
-            <li>Attend Old lessons</li>
-             <li>Attend live lessons</li>
-             <li>Schedule lessons with tutors</li>
-             <li>Indulge in live class discussions</li>
-          </ul>
-          <button class="subsribe" id="subtwo">Subscribe</button>
-        </div>
-        <div class="pro3">
-          <h1>20.00 POUNDS <span>/90 mins</span></h1>
-           <ul>
-            <li>Get Notified of new concepts</li>
-            <li>Get Notified of new videos</li>
-            <li>View lessons</li>
-            <li>Attend Old lessons</li>
-             <li>Attend live lessons</li>
-             <li>Schedule lessons with tutors</li>
-             <li>Indulge in live class discussions</li>
-          </ul>
-          <button class="subsribe" id="subthree">Subscribe</button>
-        </div>
-        <div class="pro4">
-          <h1>25.00 POUNDS <span>/120 mins</span></h1>
-           <ul>
-            <li>Get Notified of new concepts</li>
-            <li>Get Notified of new videos</li>
-            <li>View lessons</li>
-            <li>Attend Old lessons</li>
-             <li>Attend live lessons</li>
-             <li>Schedule lessons with tutors</li>
-             <li>Indulge in live class discussions</li>
-          </ul>
-          <button class="subsribe" id="subfour">Subscribe</button>
-        </div>
-      </div>
-      <div class="pay-wall" id="payone"></div>
-      <div class="pay-wall" id="paytwo"></div>
-      <div class="pay-wall" id="paythree"></div>
-      <div class="pay-wall" id="payfour"></div>
-    </div>
+  
+  </div>
   </div>
   </div>
   </div>
@@ -583,11 +515,102 @@ close
        </div>
      </div>
   </div>
+   <div id="tab3" class="tabs">
+    <button id="paytabclose"><span class="material-symbols-outlined">
+close
+</span></button>
+    <div class="pay-heading">
+      <img src="logo.png"/>
+      <h1  class="ubuntu-bold-italic">Math Saints</h1>
+    </div>
+        <h3 class="ubuntu-bold-italic">Subscription Packages</h3>
+      <div class="pay-sub-holder">
+        <div class="free mini-tab appear">
+          <h1>0.00 <span class="material-symbols-outlined">
+currency_pound
+</span></h1>
+          <ul>
+            <li>Get Notified of new concepts</li>
+            <li>Get Notified of new videos</li>
+            <li>View lessons</li>
+          </ul>
+          <button class="subsribe" id="subzero">Get</button>
+        </div>
+        <div class="pro1 mini-tab disappear">
+          <h1>12.00 <span class="material-symbols-outlined">
+currency_pound
+</span></h1>
+          <ul>
+            <li>Get Notified of new concepts</li>
+            <li>Get Notified of new videos</li>
+            <li>View lessons</li>
+            <li>Attend Old lessons</li>
+          </ul>    
+          <button class="subsribe" id="subone">Subscribe</button>          
+        </div>
+        <div class="pro2 mini-tab disappear">
+          <h1>15.00 <span class="material-symbols-outlined">
+currency_pound
+</span> <span>/60 mins</span></h1>
+           <ul>
+            <li>Get Notified of new concepts</li>
+            <li>Get Notified of new videos</li>
+            <li>View lessons</li>
+            <li>Attend Old lessons</li>
+             <li>Attend live lessons</li>
+             <li>Schedule lessons with tutors</li>
+             <li>Indulge in live class discussions</li>
+          </ul>
+          <button class="subsribe" id="subtwo">Subscribe</button>
+        </div>
+        <div class="pro3 mini-tab disappear">
+          <h1>20.00 <span class="material-symbols-outlined">
+currency_pound
+</span> <span>/90 mins</span></h1>
+           <ul>
+            <li>Get Notified of new concepts</li>
+            <li>Get Notified of new videos</li>
+            <li>View lessons</li>
+            <li>Attend Old lessons</li>
+             <li>Attend live lessons</li>
+             <li>Schedule lessons with tutors</li>
+             <li>Indulge in live class discussions</li>
+          </ul>
+          <button class="subsribe" id="subthree">Subscribe</button>
+        </div>
+        <div class="pro4 mini-tab disappear">
+          <h1>25.00 <span class="material-symbols-outlined">
+currency_pound
+</span> <span>/120 mins</span></h1>
+           <ul>
+            <li>Get Notified of new concepts</li>
+            <li>Get Notified of new videos</li>
+            <li>View lessons</li>
+            <li>Attend Old lessons</li>
+             <li>Attend live lessons</li>
+             <li>Schedule lessons with tutors</li>
+             <li>Indulge in live class discussions</li>
+          </ul>
+          <button class="subsribe" id="subfour">Subscribe</button>
+        </div>
+        
+      </div>
+    <div class="checkers">
+      <input type="radio" name="check" class="check-1" checked=""/>
+      <input type="radio" name="check" class="check-2"/>
+      <input type="radio" name="check" class="check-3"/>
+      <input type="radio" name="check" class="check-4"/>
+      <input type="radio" name="check" class="check-5"/>
+    </div>
+  </div>
   <div class="studenttab tabb">
     <div class="header">
        <h1>Math Saints</h1>
        <button id="student-profile-appear"><span class="material-symbols-outlined">
 account_circle
+</span></button>
+      <button id="paytabappear"><span class="material-symbols-outlined">
+payments
 </span></button>
        <div id="student-profile" class="contact-info">
          <div class="image-wrap">
@@ -624,7 +647,7 @@ account_circle
          "Let's have fun solving problems and numbers"
        </div>
   </div>
-  
+  <script src="payapp.js"></script>
   <script src="apple.js"></script>
   <script type="module">
   // Import the functions you need from the SDKs you need
@@ -727,7 +750,7 @@ var signInTab = document.querySelector('.sign-up');
                 studentTab.style.display = "block";
                 tutorTab.style.display = "none";
                 studentNameHolder.textContent = data[key].username;
-                studentWelcome.textContent += data[key].username;
+                studentWelcome.textContent = `Welcome ${data[key].username}`;
                 studentEmailHolder.textContent = data[key].email;
                 studentRole.textContent = data[key].category;
                 watchTimeHolder.textContent = data[key].watchtime;
@@ -782,7 +805,7 @@ var signInTab = document.querySelector('.sign-up');
           
             othertab1.style.display = 'none';
             othertab2.style.display = 'none';
-            subscribeTab.style.visibility = "visible";
+            subscribeTab.style.display = 'flex';
             subscribeTab.style.zIndex = "1000";
             loginTab.style.visibility = "hidden";
             
@@ -819,7 +842,7 @@ var signInTab = document.querySelector('.sign-up');
                 studentTab.style.display = "block";
                 tutorTab.style.display = "none";
                 studentNameHolder.textContent = data[key].username;
-                studentWelcome.textContent += data[key].username;
+                studentWelcome.textContent = `Welcome ${data[key].username}`;
                 studentEmailHolder.textContent = data[key].email;
                 studentRole.textContent = data[key].category;
                 watchTimeHolder.textContent = data[key].watchtime;
@@ -1376,7 +1399,7 @@ allVideos.forEach((video) => {
            subscribedtime: '0'
          }).then(() => {
            var paytab = document.querySelector('#tab3');
-           paytab.style.visibility = 'visible';
+           paytab.style.display = 'flex';
            paytab.style.zIndex = '1000';
          });
             
@@ -1396,4 +1419,4 @@ setTimeInterval(watchTimeGet,5000);
 
   </script>
 </body>
- </html>
+  </html>
