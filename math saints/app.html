@@ -810,7 +810,9 @@ var signInTab = document.querySelector('.sign-up');
             accountFound = true; 
             if (data[key].password === loginPassword) {
               if (data[key].category === "Student") {
-                signTab.style.display = "none";
+                signInWithEmailAndPassword(auth, data[key].email, data[key].password)
+                .then((userCredential) => {
+                  signTab.style.display = "none";
                 signInTab.style.visibility = "hidden";
                 loginTab.style.visibility = "hidden";
 
@@ -823,8 +825,12 @@ var signInTab = document.querySelector('.sign-up');
                 watchTimeHolder.textContent = data[key].watchtime;
                 watchTime = data[key].watchtime;
                 watchTimeGet(watchTime);
-              } else {
-                signTab.style.display = "none";
+            
+                });
+                  } else {
+                    signInWithEmailAndPassword(auth, data[key].email, data[key].password)
+                .then((userCredential) => {
+                  signTab.style.display = "none";
                 signInTab.style.visibility = "hidden";
                 loginTab.style.visibility = "hidden";
 
@@ -835,6 +841,8 @@ var signInTab = document.querySelector('.sign-up');
                 tutorEmailHolder.textContent = data[key].email;
                 tutorRole.textContent = data[key].category;
                 tutorLessonDownload();
+                });
+                
               }
             } else {
               showAlert("Wrong Password...");
@@ -977,7 +985,6 @@ oldLessonUploadBtn.addEventListener("click", () => {
       tutorName: tutorName.textContent,
       timestamp: timeStamp
     }).then(() => {
-      alert("yep...");
        var existingVideo = oldVideoUpload.querySelector('#videoToUpload');
         if (existingVideo) {
             oldVideoUpload.removeChild(existingVideo);
@@ -1242,6 +1249,7 @@ subOnebtn.addEventListener('click', () => {
               studentRole.textContent = data.category;
               watchTimeHolder.textContent = data.watchtime;
               subscribeTime.textContent = data.subscribedtime;
+   subtime();  
        window.location.href='https://monzo.me/serahnabunya/12.00?h=_aKU1R&d=Subsription%20for%20Math%20Saints%20Package%20one'
 
          });
@@ -1269,6 +1277,7 @@ subTwobtn.addEventListener('click', () => {
               studentRole.textContent = data.category;
               watchTimeHolder.textContent = data.watchtime;
               subscribeTime.textContent = data.subscribedtime;
+    subtime();
        window.location.href='https://monzo.me/serahnabunya/15.00?h=_aKU1R&d=Subsription%20for%20Math%20Saints%20Package%20one'
 
          });
@@ -1296,6 +1305,7 @@ subThreebtn.addEventListener('click', () => {
               studentRole.textContent = data.category;
               watchTimeHolder.textContent = data.watchtime;
               subscribeTime.textContent = data.subscribedtime;
+    subtime();
        window.location.href='https://monzo.me/serahnabunya/20.00?h=_aKU1R&d=Subsription%20for%20Math%20Saints%20Package%20one'
 
          });
@@ -1322,13 +1332,21 @@ subFourbtn.addEventListener('click', () => {
               studentRole.textContent = data.category;
               watchTimeHolder.textContent = data.watchtime;
               subscribeTime.textContent = data.subscribedtime;
+    subtime();
        window.location.href='https://monzo.me/serahnabunya/25.00?h=_aKU1R&d=Subsription%20for%20Math%20Saints%20Package%20one'
 
          });
     });
   
 });
-
+ function subtime() {
+   var studentName = studentNameHolder.textContent;
+   var subRef = query(ref(db, `users/${studentName}/`));
+   onValue(subRef, (snapshot) => {
+     var data = snapshot.val();
+     subscribeTime.textContent = data.subscribedtime;
+   });
+ }
   //watch time queries
 function watchTimeGet (watchTime) {
     const allVideos = document.querySelectorAll("video");
@@ -1378,4 +1396,4 @@ setTimeInterval(watchTimeGet,5000);
 
   </script>
 </body>
-           </html>
+ </html>
