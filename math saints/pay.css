@@ -121,73 +121,6 @@ select {
   border: 1px solid #70ff00;
   box-shadow: 0 0 10px #70ff00;
 }
-#tab3 {
-  visibility: hidden;
-  z-index: -1000;
-}
-.sub-holder {
-  display: grid;
-  gap: 20px;
-  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-  justify-items: center;
-  align-items: center;
-}
-#tab3 h3 {
-  font-size: 1.5rem;
-  text-shadow: 0 0 10px #70ff00;
-  overflow-y: auto;
-}
-.pro2, .pro3, .pro4 {
-  max-width: 350px;
-  height: 210px;
-  background: rgb(37, 211, 102);
-  padding: 20px;
-  border-radius: 20px;
-}
-.pay-wall {
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 100%;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  visibility: hidden;
-  z-index: -1000;
-  background: rgba(0, 0, 0, 0.8);
-}
-.subsribe {
-  width: auto;
-  height: 35px;
-  padding: 10px;
-  display: grid;
-  place-content: center;
-  border: 1px solid #70ff00;
-  border-radius: 5pc;
-  background: rgb(99, 168, 204);
-}
-.subsribe:hover {
-  box-shadow: 0 0 10px teal;
-}
-.free {
-  max-width: 350px;
-  height: 135px;
-  color: black;
-  background: white;
-  padding: 20px;
-  border-radius: 20px;
-  border: 1px dashed rgb(37, 211, 102);
-}
-.pro1 {
-  max-width: 350px;
-  height: 155px;
-  color: black;
-  background: #70ff00;
-  padding: 20px;
-  border-radius: 20px;
-}
 .tabb {
   position: absolute;
   width: 100%;
@@ -263,4 +196,4 @@ select {
   display: grid;
   place-content: center;
   font-size: 1.5rem;
-      }
+}
