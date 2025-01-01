@@ -66,10 +66,7 @@ visibility
 visibility
 </span></button>
         </div>
-        <a href="#tab2" class="linknext">Next</a>
-      </div>
-      <div id="tab2" class="tabs">
-        <h5>Your name:</h5>
+           <h5>Your name:</h5>
         <input class="ubuntu-regular" type="text" id="sign-up-name" placeholder="User name"/>
         <h4>
           Sign up As:
@@ -82,8 +79,7 @@ visibility
           <label for="tutor-code">Tutor Code</label>
           <input type="text" id="tutor-code"/>
         </div>
-        <a href="#tab1" class="linknext" id="back">Previous</a>
-        <button class="linknext" id="fro">Next</button>
+        <button class="linknext" id="fro">Sign up as a Student</button>
         <div>
            Already have an account <a href="#log" class="logintab linknext">Login</a>
         </div>
@@ -910,11 +906,11 @@ chooser.addEventListener('change', (e) => {
 
     if (choice === 'Tutor') {
         tutorCodeInputHolder.style.visibility = 'visible';
-        btntotutor.innerHTML = "Sign up";
+        btntotutor.innerHTML = "Sign up as a Tutor";
         btntotutor.addEventListener('click', tutorSignUp);
     } else {
         tutorCodeInputHolder.style.visibility = 'hidden';
-        btntotutor.innerHTML = `<a href="#tab3" class="linknext">Next</a>`;
+        btntotutor.innerHTML = `Sign up as a Student`;
     }
 });
 
@@ -1414,4 +1410,4 @@ setTimeInterval(watchTimeGet,5000);
 
   </script>
 </body>
-                    </html>
+  </html>
