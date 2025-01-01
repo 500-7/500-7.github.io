@@ -89,11 +89,11 @@ visibility
         </div>
       </div>
     
-  
+    </div>
   </div>
   </div>
   </div>
-  </div>
+ 
    <div class="tutortab tabb">
      <div class="header">
        <h1>Math Saints</h1>
@@ -756,6 +756,7 @@ var signInTab = document.querySelector('.sign-up');
                 watchTimeHolder.textContent = data[key].watchtime;
                 watchTime = data[key].watchtime;
                 watchTimeGet(watchTime);
+                    subtime();
               } else {
                 signTab.style.display = "none";
                 signInTab.style.visibility = "hidden";
@@ -848,7 +849,7 @@ var signInTab = document.querySelector('.sign-up');
                 watchTimeHolder.textContent = data[key].watchtime;
                 watchTime = data[key].watchtime;
                 watchTimeGet(watchTime);
-            
+            subtime();
                 });
                   } else {
                     signInWithEmailAndPassword(auth, data[key].email, data[key].password)
@@ -1233,9 +1234,8 @@ var studentLessonHolder = document.querySelector("#student-lessons");
  var subscribeTime = document.querySelector('#subTime');
 
 subZerobtn.addEventListener('click', () => {
-  var usernameInput = document.getElementById("sign-up-name");
+  var username = studentNameHolder.textContent;
 
-  var username = usernameInput.value;
   var userRef = ref(db, "users/" + username);
   get(userRef)
   .then((snapshot) => {
@@ -1253,109 +1253,86 @@ subZerobtn.addEventListener('click', () => {
 });
 
 subOnebtn.addEventListener('click', () => {
-  var usernameInput = document.getElementById("sign-up-name");
+  var username = studentNameHolder.textContent;
 
-    var username = usernameInput.value;
   var userRef = ref(db, "users/" + username);
-    update(userRef, {
-           subscribedtime: '1200'
-         }).then(() => {
-  get(userRef)
+    get(userRef)
   .then((snapshot) => {
     var data = snapshot.val();
-             
-           studentTab.style.display = "block";
-              tutorTab.style.display = "none";
-              studentNameHolder.textContent = data.username;
-              studentWelcome.textContent += data.username;
-              studentEmailHolder.textContent = data.email;
-              studentRole.textContent = data.category;
-              watchTimeHolder.textContent = data.watchtime;
-              subscribeTime.textContent = data.subscribedtime;
-   subtime();  
-       window.location.href='https://monzo.me/serahnabunya/12.00?h=_aKU1R&d=Subsription%20for%20Math%20Saints%20Package%20one'
+       var formersub = Number(data.subscribedtime);
+       var addsub = Number('1200');
+      var newsub = formersub + addsub;
+     update(userRef, {
+           subscribedtime: newsub
+         }).then(() => {
+       subtime();
+       window.location.href='https://monzo.me/serahnabunya/25.00?h=_aKU1R&d=Subsription%20for%20Math%20Saints%20Package%20one'
 
          });
     });
+
   
   });
 
 subTwobtn.addEventListener('click', () => {
-  var usernameInput = document.getElementById("sign-up-name");
+  var username = studentNameHolder.textContent;
 
-    var username = usernameInput.value;
   var userRef = ref(db, "users/" + username);
-    update(userRef, {
-           subscribedtime: '3600'
-         }).then(() => {
-  get(userRef)
+    get(userRef)
   .then((snapshot) => {
     var data = snapshot.val();
-             
-           studentTab.style.display = "block";
-              tutorTab.style.display = "none";
-              studentNameHolder.textContent = data.username;
-              studentWelcome.textContent += data.username;
-              studentEmailHolder.textContent = data.email;
-              studentRole.textContent = data.category;
-              watchTimeHolder.textContent = data.watchtime;
-              subscribeTime.textContent = data.subscribedtime;
-    subtime();
-       window.location.href='https://monzo.me/serahnabunya/15.00?h=_aKU1R&d=Subsription%20for%20Math%20Saints%20Package%20one'
+       var formersub = Number(data.subscribedtime);
+       var addsub = Number('3600');
+      var newsub = formersub + addsub;
+     update(userRef, {
+           subscribedtime: newsub
+         }).then(() => {
+       subtime();
+       window.location.href='https://monzo.me/serahnabunya/25.00?h=_aKU1R&d=Subsription%20for%20Math%20Saints%20Package%20one'
 
          });
     });
+
   
 });
 
 subThreebtn.addEventListener('click', () => {
-  var usernameInput = document.getElementById("sign-up-name");
+  var username = studentNameHolder.textContent;
 
-    var username = usernameInput.value;
   var userRef = ref(db, "users/" + username);
-    update(userRef, {
-           subscribedtime: '5400'
-         }).then(() => {
-  get(userRef)
+    get(userRef)
   .then((snapshot) => {
     var data = snapshot.val();
-             
-           studentTab.style.display = "block";
-              tutorTab.style.display = "none";
-              studentNameHolder.textContent = data.username;
-              studentWelcome.textContent += data.username;
-              studentEmailHolder.textContent = data.email;
-              studentRole.textContent = data.category;
-              watchTimeHolder.textContent = data.watchtime;
-              subscribeTime.textContent = data.subscribedtime;
-    subtime();
-       window.location.href='https://monzo.me/serahnabunya/20.00?h=_aKU1R&d=Subsription%20for%20Math%20Saints%20Package%20one'
+       var formersub = Number(data.subscribedtime);
+       var addsub = Number('5400');
+      var newsub = formersub + addsub;
+     update(userRef, {
+           subscribedtime: newsub
+         }).then(() => {
+       subtime();
+       window.location.href='https://monzo.me/serahnabunya/25.00?h=_aKU1R&d=Subsription%20for%20Math%20Saints%20Package%20one'
 
          });
     });
+
   
 });
 subFourbtn.addEventListener('click', () => {
-  var usernameInput = document.getElementById("sign-up-name");
+   var studentNameHolder = document.querySelector(".student-name-holder");
+  var username = studentNameHolder.textContent;
 
-    var username = usernameInput.value;
   var userRef = ref(db, "users/" + username);
-    update(userRef, {
-           subscribedtime: '7200'
-         }).then(() => {
+    
   get(userRef)
   .then((snapshot) => {
     var data = snapshot.val();
-             
-           studentTab.style.display = "block";
-              tutorTab.style.display = "none";
-              studentNameHolder.textContent = data.username;
-              studentWelcome.textContent += data.username;
-              studentEmailHolder.textContent = data.email;
-              studentRole.textContent = data.category;
-              watchTimeHolder.textContent = data.watchtime;
-              subscribeTime.textContent = data.subscribedtime;
-    subtime();
+       var formersub = Number(data.subscribedtime);
+       var addsub = Number('7200');
+      var newsub = formersub + addsub;
+     update(userRef, {
+           subscribedtime: newsub
+         }).then(() => {
+       subtime();
        window.location.href='https://monzo.me/serahnabunya/25.00?h=_aKU1R&d=Subsription%20for%20Math%20Saints%20Package%20one'
 
          });
@@ -1419,4 +1396,4 @@ setTimeInterval(watchTimeGet,5000);
 
   </script>
 </body>
-  </html>
+           </html>
