@@ -81,6 +81,7 @@
   visibility: hidden;
   height: 100%;
   min-width: 355px;
+  overflow-x: auto;
   scroll-snap-align: start;
   padding: 20px;
   scroll-behavior: smooth;
