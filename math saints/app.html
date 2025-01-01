@@ -729,7 +729,8 @@ var signInTab = document.querySelector('.sign-up');
   var subscribeTab = document.querySelector('#tab3');
   var othertab1 = document.querySelector('#tab1');
   var othertab2 = document.querySelector('#tab2');
-
+  var signuptalb = document.querySelector('#sign');
+   
   document.addEventListener("DOMContentLoaded", () => {
     onAuthStateChanged(auth, (user) => {
       if (user) {
@@ -802,15 +803,28 @@ var signInTab = document.querySelector('.sign-up');
           subscribedtime: "0"
         })
         .then(() => {
-         
+         var username = usernameInput.value;
+            var userRef = ref(db, "users/" + username);
+  get(userRef)
+  .then((snapshot) => {
+    var data = snapshot.val();
+             
+             
+              studentNameHolder.textContent = data.username;
+              studentWelcome.textContent = `Welcome ${data.username}`;
+              studentEmailHolder.textContent = data.email;
+              studentRole.textContent = data.category;
+              watchTimeHolder.textContent = data.watchtime;
+              subscribeTime.textContent = data.subscribedtime;
           
             othertab1.style.display = 'none';
             othertab2.style.display = 'none';
+            signuptalb.style.display = 'none';
             subscribeTab.style.display = 'flex';
             subscribeTab.style.zIndex = "1000";
             loginTab.style.visibility = "hidden";
             
-            
+             });
           
         });
       });
@@ -1243,11 +1257,15 @@ subZerobtn.addEventListener('click', () => {
               studentTab.style.display = "block";
               tutorTab.style.display = "none";
               studentNameHolder.textContent = data.username;
-              studentWelcome.textContent += data.username;
+              studentWelcome.textContent = `Welcome ${data.username}`;
               studentEmailHolder.textContent = data.email;
               studentRole.textContent = data.category;
               watchTimeHolder.textContent = data.watchtime;
               subscribeTime.textContent = data.subscribedtime;
+    
+    var paytab = document.querySelector('#tab3');
+    paytab.style.display = 'none';
+    paytab.style.zIndex = '-1000';
           
   });
 });
@@ -1396,4 +1414,4 @@ setTimeInterval(watchTimeGet,5000);
 
   </script>
 </body>
-           </html>
+                    </html>
