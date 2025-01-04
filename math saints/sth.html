@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Show/Hide Password</title>
+ 
+</head>
+<body>
+  <div>
+    <video id="localvideo" muted="">
+      
+    </video>
+    <button class="startvideo">start recording</button>
+    <button id="answervideo">Answer</button>
+    <video id="remoteVideo" autoplay=""></video>
+  </div>
+  <button id="triali">try it bro</button>
+   <script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-analytics.js";
+  import{ getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, updateProfile, onAuthStateChanged, signInWithPopup, GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-auth.js";
+  import { getDatabase, get, set, push, child, query, onValue, ref, update, remove, orderByChild } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-database.js";
+  import { getStorage, uploadBytes, uploadString, ref as sRef, getDownloadURL } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-storage.js";
+
+  
+  const firebaseConfig = {
+    apiKey: "AIzaSyC7fCNZe8l-fGhhKsMF0JVcymh8uCv1zyI",
+    authDomain: "lavender-app-eeeb0.firebaseapp.com",
+    databaseURL: "https://lavender-app-eeeb0-default-rtdb.firebaseio.com",
+    projectId: "lavender-app-eeeb0",
+    storageBucket: "lavender-app-eeeb0.appspot.com",
+    messagingSenderId: "666797584961",
+    appId: "1:666797584961:web:8d9576c372d72fe0938cc0",
+    measurementId: "G-ECZ1J6F0KK"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+  const db = getDatabase(app);
+  const storage = getStorage(app);
+  
+ var startbtn = document.querySelector('.startvideo');
+  var answerbtn = document.querySelector('#answervideo');
+ 
+  
+  const peerConnection = new RTCPeerConnection();
+  var signalRef = ref(db, 'signaling/');
+  answerbtn.disabled = true;
+
+  answerbtn.addEventListener('click', () => {
+    navigator.mediaDevices.getUserMedia({ video: true, audio: true })
+  .then((stream) => {
+    var localVideoElement = document.getElementById('localvideo');
+    localVideoElement.srcObject = stream;
+    localVideoElement.play();
+    
+    stream.getTracks().forEach((track) => peerConnection.addTrack(track, stream));
+    
+    get(signalRef)
+    .then((snapshot) => {
+      var data = snapshot.val();
+      
+       const offer = new RTCSessionDescription(data.offer);
+    peerConnection.setRemoteDescription(offer);
+    
+    peerConnection.createAnswer()
+      .then((answer) => {
+        return peerConnection.setLocalDescription(answer);
+      })
+    .then(() => {
+      update(signalRef, {
+        answer: peerConnection.localDescription.toJSON()
+      });
+    });
+      
+    });
+    
+  });
+    
+  });
+  
+  startbtn.addEventListener('click', () => {
+   // Access the user's webcam and microphone
+navigator.mediaDevices.getUserMedia({ video: true, audio: true })
+  .then((stream) => {
+    var localVideoElement = document.getElementById('localvideo');
+    localVideoElement.srcObject = stream;
+    localVideoElement.play();
+    
+    stream.getTracks().forEach((track) => peerConnection.addTrack(track, stream));
+    
+    
+    peerConnection.createOffer()
+    .then((offer) => {
+      return peerConnection.setLocalDescription(offer);
+    })
+    .then(() => {
+      set(signalRef, {
+        offer: peerConnection.localDescription.toJSON()
+      })
+    });
+  })
+  .catch((error) => {
+    alert('Error accessing media devices.', error);
+  });
+    
+ 
+  });
+  
+  onValue(signalRef, (snapshot) => {
+    var data = snapshot.val();
+    if (data && data.offer) {
+      answerbtn.disabled = false;
+      startbtn.disabled = true;
+   
+    }
+  });
+  
+  onValue(signalRef, (snapshot) => {
+    var data = snapshot.val();
+    if (data && data.answer) {
+      const answer = new RTCSessionDescription(data.answer);
+      peerConnection.setRemoteDescription(answer);
+  
+    }
+  });
+  var candidatesRef = child(signalRef, 'candidates');
+  peerConnection.onicecandidate = (event) => {
+  if (event.candidate) {
+     
+    push(candidatesRef, event.candidate.toJSON())
+    .then(() => {
+      
+    });
+  }
+};
+onValue(candidatesRef, (snapshot) => {
+    var data = snapshot.val();
+    Object.keys(data).forEach((key) => {
+       const candidate = new RTCIceCandidate(data[key].candidate);
+      peerConnection.addIceCandidate(candidate);
+
+    });
+     
+    
+});
+  peerConnection.ontrack = (event) => {
+  const remoteVideo = document.querySelector('#remoteVideo');
+  remoteVideo.srcObject = event.streams[0];
+};
+  </script>
+</body>
+</html>
